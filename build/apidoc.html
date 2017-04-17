@@ -1,0 +1,4884 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/bergie/passport-saml"
+
+    >passport-saml (v0.15.0)</a>
+</h1>
+<h4>SAML 2.0 authentication strategy for Passport</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml">module passport-saml</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.certToPEM">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.certToPEM
+            <span class="apidocSignatureSpan">(cert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.checkTimestampsValidityError
+            <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateAuthorizeRequest
+            <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateInstant">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateInstant
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateLogoutRequest
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateLogoutResponse
+            <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateUniqueID
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAdditionalParams
+            <span class="apidocSignatureSpan">(req, operation)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAuthorizeForm
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAuthorizeUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getCallbackUrl
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getLogoutResponseUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getLogoutUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getProtocol">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getProtocol
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.initialize">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.processValidlySignedAssertion
+            <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.requestToUrl
+            <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.signRequest">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.signRequest
+            <span class="apidocSignatureSpan">(samlMessage)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validatePostRequest
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validatePostResponse
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validateSignature">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validateSignature
+            <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy
+            <span class="apidocSignatureSpan">(options, verify)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.logout">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.logout
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.super_.prototype.authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-saml.</span>Strategy.super_.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML">module passport-saml.SAML</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.SAML">
+            function <span class="apidocSignatureSpan">passport-saml.</span>SAML
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype">module passport-saml.SAML.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.certToPEM">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>certToPEM
+            <span class="apidocSignatureSpan">(cert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>checkTimestampsValidityError
+            <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateAuthorizeRequest
+            <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateInstant">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateInstant
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutRequest
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutResponse
+            <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateUniqueID
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAdditionalParams
+            <span class="apidocSignatureSpan">(req, operation)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeForm
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getCallbackUrl
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutResponseUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getProtocol">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getProtocol
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.initialize">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>processValidlySignedAssertion
+            <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>requestToUrl
+            <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.signRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>signRequest
+            <span class="apidocSignatureSpan">(samlMessage)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostRequest
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostResponse
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validateSignature">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validateSignature
+            <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.certToPEM">module passport-saml.SAML.prototype.certToPEM</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.certToPEM.certToPEM">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>certToPEM
+            <span class="apidocSignatureSpan">(cert)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.checkTimestampsValidityError">module passport-saml.SAML.prototype.checkTimestampsValidityError</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError.checkTimestampsValidityError">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>checkTimestampsValidityError
+            <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateAuthorizeRequest">module passport-saml.SAML.prototype.generateAuthorizeRequest</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest.generateAuthorizeRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateAuthorizeRequest
+            <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateInstant">module passport-saml.SAML.prototype.generateInstant</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateInstant.generateInstant">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateInstant
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateLogoutRequest">module passport-saml.SAML.prototype.generateLogoutRequest</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest.generateLogoutRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutRequest
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateLogoutResponse">module passport-saml.SAML.prototype.generateLogoutResponse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse.generateLogoutResponse">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutResponse
+            <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateServiceProviderMetadata">module passport-saml.SAML.prototype.generateServiceProviderMetadata</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.generateUniqueID">module passport-saml.SAML.prototype.generateUniqueID</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID.generateUniqueID">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateUniqueID
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getAdditionalParams">module passport-saml.SAML.prototype.getAdditionalParams</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams.getAdditionalParams">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAdditionalParams
+            <span class="apidocSignatureSpan">(req, operation)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getAuthorizeForm">module passport-saml.SAML.prototype.getAuthorizeForm</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm.getAuthorizeForm">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeForm
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getAuthorizeUrl">module passport-saml.SAML.prototype.getAuthorizeUrl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl.getAuthorizeUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getCallbackUrl">module passport-saml.SAML.prototype.getCallbackUrl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl.getCallbackUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getCallbackUrl
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getLogoutResponseUrl">module passport-saml.SAML.prototype.getLogoutResponseUrl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl.getLogoutResponseUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutResponseUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getLogoutUrl">module passport-saml.SAML.prototype.getLogoutUrl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl.getLogoutUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutUrl
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.getProtocol">module passport-saml.SAML.prototype.getProtocol</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.getProtocol.getProtocol">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getProtocol
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.initialize">module passport-saml.SAML.prototype.initialize</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.initialize.initialize">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>initialize
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.processValidlySignedAssertion">module passport-saml.SAML.prototype.processValidlySignedAssertion</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion.processValidlySignedAssertion">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>processValidlySignedAssertion
+            <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.requestToUrl">module passport-saml.SAML.prototype.requestToUrl</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl.requestToUrl">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>requestToUrl
+            <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.signRequest">module passport-saml.SAML.prototype.signRequest</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.signRequest.signRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>signRequest
+            <span class="apidocSignatureSpan">(samlMessage)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.validatePostRequest">module passport-saml.SAML.prototype.validatePostRequest</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest.validatePostRequest">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostRequest
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.validatePostResponse">module passport-saml.SAML.prototype.validatePostResponse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse.validatePostResponse">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostResponse
+            <span class="apidocSignatureSpan">(container, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.SAML.prototype.validateSignature">module passport-saml.SAML.prototype.validateSignature</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.SAML.prototype.validateSignature.validateSignature">
+            function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validateSignature
+            <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy">module passport-saml.Strategy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.Strategy">
+            function <span class="apidocSignatureSpan">passport-saml.</span>Strategy
+            <span class="apidocSignatureSpan">(options, verify)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.prototype">module passport-saml.Strategy.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.logout">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>logout
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.prototype.authenticate">module passport-saml.Strategy.prototype.authenticate</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.authenticate.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.prototype.generateServiceProviderMetadata">module passport-saml.Strategy.prototype.generateServiceProviderMetadata</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>generateServiceProviderMetadata
+            <span class="apidocSignatureSpan">( decryptionCert )</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.prototype.logout">module passport-saml.Strategy.prototype.logout</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.prototype.logout.logout">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>logout
+            <span class="apidocSignatureSpan">(req, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.super_">module passport-saml.Strategy.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_.super_">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_.Strategy">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.</span>Strategy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.super_.prototype">module passport-saml.Strategy.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-saml.Strategy.super_.prototype.authenticate">module passport-saml.Strategy.super_.prototype.authenticate</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate.authenticate">
+            function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml" id="apidoc.module.passport-saml">module passport-saml</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML" id="apidoc.element.passport-saml.SAML">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML = function (options) {
+  var self = this;
+
+  this.options = this.initialize(options);
+  this.cacheProvider = this.options.cacheProvider;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.certToPEM" id="apidoc.element.passport-saml.SAML.prototype.certToPEM">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.certToPEM
+        <span class="apidocSignatureSpan">(cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.certToPEM = function (cert) {
+  cert = cert.match(/.{1,64}/g).join(&#x27;\n&#x27;);
+
+  if (cert.indexOf(&#x27;-BEGIN CERTIFICATE-&#x27;) === -1)
+    cert = &#x22;-----BEGIN CERTIFICATE-----\n&#x22; + cert;
+  if (cert.indexOf(&#x27;-END CERTIFICATE-&#x27;) === -1)
+    cert = cert + &#x22;\n-----END CERTIFICATE-----\n&#x22;;
+
+  return cert;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError" id="apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.checkTimestampsValidityError
+        <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.checkTimestampsValidityError = function (nowMs, notBefore, notOnOrAfter) {
+  var self = this;
+  if (self.options.acceptedClockSkewMs == -1)
+      return null;
+
+  if (notBefore) {
+    var notBeforeMs = Date.parse(notBefore);
+    if (nowMs + self.options.acceptedClockSkewMs &#x3c; notBeforeMs)
+        return new Error(&#x27;SAML assertion not yet valid&#x27;);
+  }
+  if (notOnOrAfter) {
+    var notOnOrAfterMs = Date.parse(notOnOrAfter);
+    if (nowMs - self.options.acceptedClockSkewMs &#x3e;= notOnOrAfterMs)
+      return new Error(&#x27;SAML assertion expired&#x27;);
+  }
+
+  return null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest" id="apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateAuthorizeRequest
+        <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateAuthorizeRequest = function (req, isPassive, callback) {
+  var self = this;
+  var id = &#x22;_&#x22; + self.generateUniqueID();
+  var instant = self.generateInstant();
+  var forceAuthn = self.options.forceAuthn || false;
+
+  Q.fcall(function() {
+    if(self.options.validateInResponseTo) {
+      return Q.ninvoke(self.cacheProvider, &#x27;save&#x27;, id, instant);
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var request = {
+      &#x27;samlp:AuthnRequest&#x27;: {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@ID&#x27;: id,
+        &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+        &#x27;@IssueInstant&#x27;: instant,
+        &#x27;@ProtocolBinding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+        &#x27;@AssertionConsumerServiceURL&#x27;: self.getCallbackUrl(req),
+        &#x27;@Destination&#x27;: self.options.entryPoint,
+        &#x27;saml:Issuer&#x27; : {
+          &#x27;@xmlns:saml&#x27; : &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.issuer
+        }
+      }
+    };
+
+    if (isPassive)
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@IsPassive&#x27;] = true;
+
+    if (forceAuthn) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@ForceAuthn&#x27;] = true;
+    }
+
+    if (self.options.identifierFormat) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:NameIDPolicy&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Format&#x27;: self.options.identifierFormat,
+        &#x27;@AllowCreate&#x27;: &#x27;true&#x27;
+      };
+    }
+
+    if (!self.options.disableRequestedAuthnContext) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:RequestedAuthnContext&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Comparison&#x27;: &#x27;exact&#x27;,
+        &#x27;saml:AuthnContextClassRef&#x27;: {
+          &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.authnContext
+        }
+      };
+    }
+
+    if (self.options.attributeConsumingServiceIndex) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@AttributeConsumingServiceIndex&#x27;] = self.options.attributeConsumingServiceIndex;
+    }
+
+    callback(null, xmlbuilder.create(request).end());
+  })
+  .fail(function(err){
+    callback(err);
+  })
+  .done();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateInstant" id="apidoc.element.passport-saml.SAML.prototype.generateInstant">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateInstant
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateInstant = function () {
+  return new Date().toISOString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateLogoutRequest
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateLogoutRequest = function (req) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutRequest&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;saml:NameID&#x27; : {
+        &#x27;@Format&#x27;: req.user.nameIDFormat,
+        &#x27;#text&#x27;: req.user.nameID
+      }
+    }
+  };
+
+  if (typeof(req.user.nameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@NameQualifier&#x27;] = req.user.nameQualifier;
+  }
+
+  if (typeof(req.user.spNameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@SPNameQualifier&#x27;] = req.user.spNameQualifier;
+  }
+
+  if (req.user.sessionIndex) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml2p:SessionIndex&#x27;] = {
+      &#x27;@xmlns:saml2p&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;#text&#x27;: req.user.sessionIndex
+    };
+  }
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateLogoutResponse
+        <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateLogoutResponse = function (req, logoutRequest) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutResponse&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;@InResponseTo&#x27;: logoutRequest.ID,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;samlp:Status&#x27;: {
+        &#x27;samlp:StatusCode&#x27;: {
+          &#x27;@Value&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:status:Success&#x27;
+        }
+      }
+    }
+  };
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata" id="apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateServiceProviderMetadata = function ( decryptionCert ) {
+  var metadata = {
+    &#x27;EntityDescriptor&#x27; : {
+      &#x27;@xmlns&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:metadata&#x27;,
+      &#x27;@xmlns:ds&#x27;: &#x27;http://www.w3.org/2000/09/xmldsig#&#x27;,
+      &#x27;@entityID&#x27;: this.options.issuer,
+      &#x27;@ID&#x27;: this.options.issuer.replace(/\W/g, &#x27;_&#x27;),
+      &#x27;SPSSODescriptor&#x27; : {
+        &#x27;@protocolSupportEnumeration&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      },
+    }
+  };
+
+  if (this.options.decryptionPvk) {
+    if (!decryptionCert) {
+      throw new Error(
+        &#x22;Missing decryptionCert while generating metadata for decrypting service provider&#x22;);
+    }
+
+    decryptionCert = decryptionCert.replace( /-+BEGIN CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /-+END CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /\r\n/g, &#x27;\n&#x27; );
+
+    metadata.EntityDescriptor.SPSSODescriptor.KeyDescriptor = {
+      &#x27;ds:KeyInfo&#x27; : {
+        &#x27;ds:X509Data&#x27; : {
+          &#x27;ds:X509Certificate&#x27;: {
+            &#x27;#text&#x27;: decryptionCert
+          }
+        }
+      },
+      &#x27;#list&#x27; : [
+        // this should be the set that the xmlenc library supports
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes256-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes128-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#tripledes-cbc&#x27; } },
+      ]
+    };
+  }
+
+  if (this.options.logoutCallbackUrl) {
+    metadata.EntityDescriptor.SPSSODescriptor.SingleLogoutService = {
+      &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+      &#x27;@Location&#x27;: this.options.logoutCallbackUrl
+    };
+  }
+
+  metadata.EntityDescriptor.SPSSODescriptor.NameIDFormat = this.options.identifierFormat;
+  metadata.EntityDescriptor.SPSSODescriptor.AssertionConsumerService = {
+    &#x27;@index&#x27;: &#x27;1&#x27;,
+    &#x27;@isDefault&#x27;: &#x27;true&#x27;,
+    &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+    &#x27;@Location&#x27;: this.getCallbackUrl({})
+  };
+
+  return xmlbuilder.create(metadata).end({ pretty: true, indent: &#x27;  &#x27;, newline: &#x27;\n&#x27; });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID" id="apidoc.element.passport-saml.SAML.prototype.generateUniqueID">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.generateUniqueID
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.generateUniqueID = function () {
+  var chars = &#x22;abcdef0123456789&#x22;;
+  var uniqueID = &#x22;&#x22;;
+  for (var i = 0; i &#x3c; 20; i++) {
+    uniqueID += chars.substr(Math.floor((Math.random()*15)), 1);
+  }
+  return uniqueID;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams" id="apidoc.element.passport-saml.SAML.prototype.getAdditionalParams">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAdditionalParams
+        <span class="apidocSignatureSpan">(req, operation)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getAdditionalParams = function (req, operation) {
+  var additionalParams = {};
+
+  var RelayState = req.query &#x26;&#x26; req.query.RelayState || req.body &#x26;&#x26; req.body.RelayState;
+  if (RelayState) {
+    additionalParams.RelayState = RelayState;
+  }
+
+  var optionsAdditionalParams = this.options.additionalParams || {};
+  Object.keys(optionsAdditionalParams).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParams[k];
+  });
+
+  var optionsAdditionalParamsForThisOperation = {};
+  if (operation == &#x22;authorize&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalAuthorizeParams || {};
+  }
+  if (operation == &#x22;logout&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalLogoutParams || {};
+  }
+
+  Object.keys(optionsAdditionalParamsForThisOperation).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParamsForThisOperation[k];
+  });
+
+  return additionalParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAuthorizeForm
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getAuthorizeForm = function (req, callback) {
+  var self = this;
+
+  // The quoteattr() function is used in a context, where the result will not be evaluated by javascript
+  // but must be interpreted by an XML or HTML parser, and it must absolutely avoid breaking the syntax
+  // of an element attribute.
+  var quoteattr = function(s, preserveCR) {
+    preserveCR = preserveCR ? &#x27;&#x26;#13;&#x27; : &#x27;\n&#x27;;
+    return (&#x27;&#x27; + s) // Forces the conversion to string.
+      .replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;) // This MUST be the 1st replacement.
+      .replace(/&#x27;/g, &#x27;&#x26;apos;&#x27;) // The 4 other predefined entities, required.
+      .replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;)
+      .replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;)
+      .replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;)
+       // Add other replacements here for HTML only
+       // Or for XML, only if the named entities are defined in its DTD.
+      .replace(/\r\n/g, preserveCR) // Must be before the next replacement.
+      .replace(/[\r\n]/g, preserveCR);
+  };
+
+  var getAuthorizeFormHelper = function(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var operation = &#x27;authorize&#x27;;
+    var additionalParameters = self.getAdditionalParams(req, operation);
+    var samlMessage = {
+      SAMLRequest: buffer.toString(&#x27;base64&#x27;)
+    };
+
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k] || &#x27;&#x27;;
+    });
+
+    var formInputs = Object.keys(samlMessage).map(function(k) {
+      return &#x27;&#x3c;input type=&#x22;hidden&#x22; name=&#x22;&#x27; + k + &#x27;&#x22; value=&#x22;&#x27; + quoteattr(samlMessage[k]) + &#x27;&#x22; /&#x3e;&#x27;;
+    }).join(&#x27;\r\n&#x27;);
+
+    callback(null, [
+      &#x27;&#x3c;!DOCTYPE html&#x3e;&#x27;,
+      &#x27;&#x3c;html&#x3e;&#x27;,
+      &#x27;&#x3c;head&#x3e;&#x27;,
+      &#x27;&#x3c;meta charset=&#x22;utf-8&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;meta http-equiv=&#x22;x-ua-compatible&#x22; content=&#x22;ie=edge&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;/head&#x3e;&#x27;,
+      &#x27;&#x3c;body onload=&#x22;document.forms[0].submit()&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;noscript&#x3e;&#x27;,
+      &#x27;&#x3c;p&#x3e;&#x3c;strong&#x3e;Note:&#x3c;/strong&#x3e; Since your browser does not support JavaScript, you must press the button below once to proceed
+.&#x3c;/p&#x3e;&#x27;,
+      &#x27;&#x3c;/noscript&#x3e;&#x27;,
+      &#x27;&#x3c;form method=&#x22;post&#x22; action=&#x22;&#x27; + encodeURI(self.options.entryPoint) + &#x27;&#x22;&#x3e;&#x27;,
+      formInputs,
+      &#x27;&#x3c;input type=&#x22;submit&#x22; value=&#x22;Submit&#x22; /&#x3e;&#x27;,
+      &#x27;&#x3c;/form&#x3e;&#x27;,
+      &#x27;&#x3c;script&#x3e;document.forms[0].style.display=&#x22;none&#x22;;&#x3c;/script&#x3e;&#x27;, // Hide the form if JavaScript is enabled
+      &#x27;&#x3c;/body&#x3e;&#x27;,
+      &#x27;&#x3c;/html&#x3e;&#x27;
+    ].join(&#x27;\r\n&#x27;));
+  };
+
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request) {
+    if (err) {
+      return callback(err);
+    }
+
+    if (self.options.skipRequestCompression) {
+      getAuthorizeFormHelper(null, new Buffer(request, &#x27;utf8&#x27;));
+    } else {
+      zlib.deflateRaw(request, getAuthorizeFormHelper);
+    }
+  });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getAuthorizeUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getAuthorizeUrl = function (req, callback) {
+  var self = this;
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request){
+    if (err)
+      return callback(err);
+    var operation = &#x27;authorize&#x27;;
+    self.requestToUrl(request, null, operation, self.getAdditionalParams(req, operation), callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl" id="apidoc.element.passport-saml.SAML.prototype.getCallbackUrl">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getCallbackUrl
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getCallbackUrl = function (req) {
+    // Post-auth destination
+  if (this.options.callbackUrl) {
+    return this.options.callbackUrl;
+  } else {
+    var host;
+    if (req.headers) {
+      host = req.headers.host;
+    } else {
+      host = this.options.host;
+    }
+    return this.getProtocol(req) + host + this.options.path;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getLogoutResponseUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getLogoutResponseUrl = function (req, callback) {
+  var response = this.generateLogoutResponse(req, req.samlLogoutRequest);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(null, response, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutUrl">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getLogoutUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getLogoutUrl = function (req, callback) {
+  var request = this.generateLogoutRequest(req);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(request, null, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getProtocol" id="apidoc.element.passport-saml.SAML.prototype.getProtocol">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.getProtocol
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.getProtocol = function (req) {
+  return this.options.protocol || (req.protocol || &#x27;http&#x27;).concat(&#x27;://&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.initialize" id="apidoc.element.passport-saml.SAML.prototype.initialize">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.initialize = function (options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!options.path) {
+    options.path = &#x27;/saml/consume&#x27;;
+  }
+
+  if (!options.host) {
+    options.host = &#x27;localhost&#x27;;
+  }
+
+  if (!options.issuer) {
+    options.issuer = &#x27;onelogin_saml&#x27;;
+  }
+
+  if (options.identifierFormat === undefined) {
+    options.identifierFormat = &#x22;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&#x22;;
+  }
+
+  if (options.authnContext === undefined) {
+    options.authnContext = &#x22;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&#x22;;
+  }
+
+  if (!options.acceptedClockSkewMs) {
+    // default to no skew
+    options.acceptedClockSkewMs = 0;
+  }
+
+  if(!options.validateInResponseTo){
+    options.validateInResponseTo = false;
+  }
+
+  if(!options.requestIdExpirationPeriodMs){
+    options.requestIdExpirationPeriodMs = 28800000;  // 8 hours
+  }
+
+  if(!options.cacheProvider){
+      options.cacheProvider = new InMemoryCacheProvider(
+          {keyExpirationPeriodMs: options.requestIdExpirationPeriodMs });
+  }
+
+  if (!options.logoutUrl) {
+    // Default to Entry Point
+    options.logoutUrl = options.entryPoint || &#x27;&#x27;;
+  }
+
+  // sha1 or sha256
+  if (!options.signatureAlgorithm) {
+    options.signatureAlgorithm = &#x27;sha1&#x27;;
+  }
+
+  return options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion" id="apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.processValidlySignedAssertion
+        <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.processValidlySignedAssertion = function (xml, inResponseTo, callback) {
+  var self = this;
+  var msg;
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var nowMs = new Date().getTime();
+  var profile = {};
+  var assertion;
+  var parser = new xml2js.Parser(parserConfig);
+  Q.ninvoke(parser, &#x27;parseString&#x27;, xml)
+  .then(function(doc) {
+    assertion = doc.Assertion;
+
+    var issuer = assertion.Issuer;
+    if (issuer) {
+      profile.issuer = issuer[0];
+    }
+
+    var authnStatement = assertion.AuthnStatement;
+    if (authnStatement) {
+      if (authnStatement[0].$ &#x26;&#x26; authnStatement[0].$.SessionIndex) {
+        profile.sessionIndex = authnStatement[0].$.SessionIndex;
+      }
+    }
+
+    var subject = assertion.Subject;
+    var subjectConfirmation, confirmData;
+    if (subject) {
+      var nameID = subject[0].NameID;
+      if (nameID) {
+        profile.nameID = nameID[0]._ || nameID[0];
+
+        if (nameID[0].$ &#x26;&#x26; nameID[0].$.Format) {
+          profile.nameIDFormat = nameID[0].$.Format;
+          profile.nameQualifier = nameID[0].$.NameQualifier;
+          profile.spNameQualifier = nameID[0].$.SPNameQualifier;
+        }
+      }
+
+      subjectConfirmation = subject[0].SubjectConfirmation ?
+                            subject[0].SubjectConfirmation[0] : null;
+      confirmData = subjectConfirmation &#x26;&#x26; subjectConfirmation.SubjectConfirmationData ?
+                    subjectConfirmation.SubjectConfirmationData[0] : null;
+      if (subject[0].SubjectConfirmation &#x26;&#x26; subject[0].SubjectConfirmation.length &#x3e; 1) {
+        msg = &#x27;Unable to process multiple SubjectConfirmations in SAML assertion&#x27;;
+        throw new Error(msg);
+      }
+
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectNotBefore = confirmData.$.NotBefore;
+          var subjectNotOnOrAfter = confirmData.$.NotOnOrAfter;
+
+          var subjErr = self.checkTimestampsValidityError(
+                          nowMs, subjectNotBefore, subjectNotOnOrAfter);
+          if (subjErr) {
+            throw subjErr;
+          }
+        }
+      }
+    }
+
+    // Test to see that if we have a SubjectConfirmation InResponseTo that it matches
+    // the &#x27;InResponseTo&#x27; attribute set in the Response
+    if (self.options.validateInResponseTo) {
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectInResponseTo = confirmData.$.InResponseTo;
+          if (inResponseTo &#x26;&#x26; subjectInResponseTo &#x26;&#x26; subjectInResponseTo != inResponseTo) {
+            return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo)
+              .then(function(){
+                throw new Error(&#x27;InResponseTo is not valid&#x27;);
+              });
+          } else if (subjectInResponseTo) {
+            var foundValidInResponseTo = false;
+            return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, subjectInResponseTo)
+              .then(function(result){
+                if (result) {
+                  var createdAt = new Date(result);
+                  if (nowMs &#x3c; createdAt.getTime() + self.options.requestIdExpirationPeriodMs)
+                    foundValidInResponseTo = true;
+                }
+                return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo );
+              })
+              .then(function(){
+                if (!foundValidInResponseTo) {
+                  throw new Error(&#x27;InResponseTo is not valid&#x27;);
+                }
+                return Q();
+              });
+          }
+        }
+      } else {
+        return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo);
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var conditions = assertion.Conditions ? assertion.Conditions[0] : null;
+    if (assertion.Conditions &#x26;&#x26; assertion.Conditions.length &#x3e; 1) {
+      msg = &#x27;Unable to process multiple conditions in SAML assertion&#x27;;
+      throw new Error(msg);
+    }
+    if(conditions &#x26;&#x26; conditions.$) {
+      var conErr = self.checkTimestampsValidityError(
+                    nowMs, conditions.$.NotBefore, conditions.$.NotOnOrAfter);
+      if(conErr)
+        throw conErr; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl" id="apidoc.element.passport-saml.SAML.prototype.requestToUrl">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.requestToUrl
+        <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.requestToUrl = function (request, response, operation, additionalParameters, callback) {
+  var self = this;
+  if (self.options.skipRequestCompression)
+    requestToUrlHelper(null, new Buffer(request || response, &#x27;utf8&#x27;));
+  else
+    zlib.deflateRaw(request || response, requestToUrlHelper);
+
+  function requestToUrlHelper(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var base64 = buffer.toString(&#x27;base64&#x27;);
+    var target = url.parse(self.options.entryPoint, true);
+
+    if (operation === &#x27;logout&#x27;) {
+      if (self.options.logoutUrl) {
+        target = url.parse(self.options.logoutUrl, true);
+      }
+    } else if (operation !== &#x27;authorize&#x27;) {
+        return callback(new Error(&#x22;Unknown operation: &#x22;+operation));
+    }
+
+    var samlMessage = request ? {
+      SAMLRequest: base64
+    } : {
+      SAMLResponse: base64
+    };
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k];
+    });
+
+    if (self.options.privateCert) {
+      // sets .SigAlg and .Signature
+      self.signRequest(samlMessage);
+    }
+    Object.keys(samlMessage).forEach(function(k) {
+      target.query[k] = samlMessage[k];
+    });
+
+    // Delete &#x27;search&#x27; to for pulling query string from &#x27;query&#x27;
+    // https://nodejs.org/api/url.html#url_url_format_urlobj
+    delete target.search;
+
+    callback(null, url.format(target));
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.signRequest" id="apidoc.element.passport-saml.SAML.prototype.signRequest">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.signRequest
+        <span class="apidocSignatureSpan">(samlMessage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.signRequest = function (samlMessage) {
+  var signer;
+  var samlMessageToSign = {};
+  switch(this.options.signatureAlgorithm) {
+    case &#x27;sha256&#x27;:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA256&#x27;);
+      break;
+    default:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA1&#x27;);
+      break;
+  }
+  if (samlMessage.SAMLRequest) {
+    samlMessageToSign.SAMLRequest = samlMessage.SAMLRequest;
+  }
+  if (samlMessage.SAMLResponse) {
+    samlMessageToSign.SAMLResponse = samlMessage.SAMLResponse;
+  }
+  if (samlMessage.RelayState) {
+    samlMessageToSign.RelayState = samlMessage.RelayState;
+  }
+  if (samlMessage.SigAlg) {
+    samlMessageToSign.SigAlg = samlMessage.SigAlg;
+  }
+  signer.update(querystring.stringify(samlMessageToSign));
+  samlMessage.Signature = signer.sign(this.options.privateCert, &#x27;base64&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest" id="apidoc.element.passport-saml.SAML.prototype.validatePostRequest">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validatePostRequest
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.validatePostRequest = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLRequest, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var dom = new xmldom.DOMParser().parseFromString(xml);
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var parser = new xml2js.Parser(parserConfig);
+  parser.parseString(xml, function (err, doc) {
+    if (err) {
+      return callback(err);
+    }
+
+    // Check if this document has a valid top-level signature
+    if (self.options.cert &#x26;&#x26; !self.validateSignature(xml, dom.documentElement, self.options.cert)) {
+      return callback(new Error(&#x27;Invalid signature&#x27;));
+    }
+
+    processValidlySignedPostRequest(self, doc, callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse" id="apidoc.element.passport-saml.SAML.prototype.validatePostResponse">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validatePostResponse
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.validatePostResponse = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLResponse, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var doc = new xmldom.DOMParser().parseFromString(xml);
+
+  var inResponseTo = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/@InResponseTo&#x22;);
+  if(inResponseTo){
+    inResponseTo = inResponseTo.length ? inResponseTo[0].nodeValue : null;
+  }
+
+  Q.fcall(function(){
+    if(self.options.validateInResponseTo){
+      if (inResponseTo) {
+        return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, inResponseTo)
+          .then(function(result) {
+            if (!result)
+              throw new Error(&#x27;InResponseTo is not valid&#x27;);
+            return Q();
+          });
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function() {
+    // Check if this document has a valid top-level signature
+    var validSignature = false;
+    if (self.options.cert &#x26;&#x26; self.validateSignature(xml, doc.documentElement, self.options.cert)) {
+      validSignature = true;
+    }
+
+    var assertions = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+    var encryptedAssertions = xpath(doc,
+      &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;EncryptedAssertion&#x27;]&#x22;);
+
+    if (assertions.length + encryptedAssertions.length &#x3e; 1) {
+      // There&#x27;s no reason I know of that we want to handle multiple assertions, and it seems like a
+      //   potential risk vector for signature scope issues, so treat this as an invalid signature
+      throw new Error(&#x27;Invalid signature&#x27;);
+    }
+
+    if (assertions.length == 1) {
+      if (self.options.cert &#x26;&#x26;
+          !validSignature &#x26;&#x26;
+          !self.validateSignature(xml, assertions[0], self.options.cert)) {
+        throw new Error(&#x27;Invalid signature&#x27;);
+      }
+      return self.processValidlySignedAssertion(assertions[0].toString(), inResponseTo, callback);
+    }
+
+    if (encryptedAssertions.length == 1) {
+      if (!self.options.decryptionPvk)
+        throw new Error(&#x27;No decryption key for encrypted SAML response&#x27;);
+
+      var encryptedDatas = xpath( encryptedAssertions[0], &#x22;./*[local-name()=&#x27;EncryptedData&#x27;]&#x22;);
+      if (encryptedDatas.length != 1)
+        throw new Error(&#x27;Invalid signature&#x27;);
+      var encryptedDataXml = encryptedDatas[0].toString();
+
+      var xmlencOptions = { key: self.options.decryptionPvk };
+      return Q.ninvoke(xmlenc, &#x27;decrypt&#x27;, encryptedDataXml, xmlencOptions)
+        .then(function(decryptedXml) {
+          var decryptedDoc = new xmldom.DOMParser().parseFromString(decryptedXml);
+          var decryptedAssertions = xpath(decryptedDoc, &#x22;/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+          if (decryptedAssertions.length != 1)
+            throw new Error(&#x27;Invalid EncryptedAssertion content&#x27;);
+
+          if (self.options.cert &#x26;&#x26;
+              !validSignature &#x26;&#x26;
+              !self.validateSignature(decryptedXml, decryptedAssertions[0], self.options.cert))
+            throw new Error(&#x27;Invalid signature&#x27;);
+
+          self.processValidlySignedAssertion(decryptedAssertions[0].toString(), inResponseTo, callback);
+        });
+    }
+
+    // If there&#x27;s no assertion, fall back on xml2js response parsing for the status &#x26;
+    //   LogoutResponse code.
+
+    var parserConfig = {
+      explicitRoot: true,
+      explicitCharkey: true,
+      tagNameProcessors: [xml2js.processors.stripPrefix]
+    };
+    var parser = new xml2js.Parser(parserConfig);
+    return Q.ninvoke( parser, &#x27;parseString&#x27;, xml)
+      .then(function(doc) {
+        var response = doc.Response;
+        if (response) {
+          var assertion = response.Assertion;
+          if (!assertion) {
+            var status = response.Status;
+            if (status) {
+              var statusCode = status[0].StatusCode;
+              if (statusCode &#x26;&#x26; statusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:Responder&#x22;) {
+                var nestedStatusCode = statusCode[0].StatusCode;
+                if (nestedStatusCode &#x26;&#x26; nestedStatusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:NoPassive&#x22;) {
+                  if (self.options.cert &#x26;&#x26; !validSignature) {
+                    throw new Error(&#x27;Invalid signature&#x27;); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validateSignature" id="apidoc.element.passport-saml.SAML.prototype.validateSignature">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML.prototype.validateSignature
+        <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML.prototype.validateSignature = function (fullXml, currentNode, cert) {
+  var self = this;
+  var xpathSigQuery = &#x22;.//*[local-name(.)=&#x27;Signature&#x27; and &#x22; +
+                      &#x22;namespace-uri(.)=&#x27;http://www.w3.org/2000/09/xmldsig#&#x27;]&#x22;;
+  var signatures = xpath(currentNode, xpathSigQuery);
+  // This function is expecting to validate exactly one signature, so if we find more or fewer
+  //   than that, reject.
+  if (signatures.length != 1)
+    return false;
+  var signature = signatures[0];
+  var sig = new xmlCrypto.SignedXml();
+  sig.keyInfoProvider = {
+    getKeyInfo: function (key) {
+      return &#x22;&#x3c;X509Data&#x3e;&#x3c;/X509Data&#x3e;&#x22;;
+    },
+    getKey: function (keyInfo) {
+      return self.certToPEM(cert);
+    }
+  };
+  sig.loadSignature(signature);
+  // We expect each signature to contain exactly one reference to the top level of the xml we
+  //   are validating, so if we see anything else, reject.
+  if (sig.references.length != 1 )
+    return false;
+  var refUri = sig.references[0].uri;
+  var refId = (refUri[0] === &#x27;#&#x27;) ? refUri.substring(1) : refUri;
+  // If we can&#x27;t find the reference at the top level, reject
+  var idAttribute = currentNode.getAttribute(&#x27;ID&#x27;) ? &#x27;ID&#x27; : &#x27;Id&#x27;;
+  if (currentNode.getAttribute(idAttribute) != refId)
+    return false;
+  // If we find any extra referenced nodes, reject.  (xml-crypto only verifies one digest, so
+  //   multiple candidate references is bad news)
+  var totalReferencedNodes = xpath(currentNode.ownerDocument,
+                                  &#x22;//*[@&#x22; + idAttribute + &#x22;=&#x27;&#x22; + refId + &#x22;&#x27;]&#x22;);
+  if (totalReferencedNodes.length &#x3e; 1)
+    return false;
+  return sig.checkSignature(fullXml);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy" id="apidoc.element.passport-saml.Strategy">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy
+        <span class="apidocSignatureSpan">(options, verify)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy(options, verify) {
+  if (typeof options == &#x27;function&#x27;) {
+    verify = options;
+    options = {};
+  }
+
+  if (!verify) {
+    throw new Error(&#x27;SAML authentication strategy requires a verify function&#x27;);
+  }
+
+  this.name = &#x27;saml&#x27;;
+
+  passport.Strategy.call(this);
+
+  this._verify = verify;
+  this._saml = new saml.SAML(options);
+  this._passReqToCallback = !!options.passReqToCallback;
+  this._authnRequestBinding = options.authnRequestBinding || &#x27;HTTP-Redirect&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.authenticate" id="apidoc.element.passport-saml.Strategy.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Strategy.prototype.authenticate = function (req, options) {
+  var self = this;
+
+  options.samlFallback = options.samlFallback || &#x27;login-request&#x27;;
+
+  function validateCallback(err, profile, loggedOut) {
+      if (err) {
+        return self.error(err);
+      }
+
+      if (loggedOut) {
+        req.logout();
+        if (profile) {
+          req.samlLogoutRequest = profile;
+          return self._saml.getLogoutResponseUrl(req, redirectIfSuccess);
+        }
+        return self.pass();
+      }
+
+      var verified = function (err, user, info) {
+        if (err) {
+          return self.error(err);
+        }
+
+        if (!user) {
+          return self.fail(info);
+        }
+
+        self.success(user, info);
+      };
+
+      if (self._passReqToCallback) {
+        self._verify(req, profile, verified);
+      } else {
+        self._verify(profile, verified);
+      }
+  }
+
+  function redirectIfSuccess(err, url) {
+    if (err) {
+      self.error(err);
+    } else {
+      self.redirect(url);
+    }
+  }
+
+  if (req.body &#x26;&#x26; req.body.SAMLResponse) {
+      this._saml.validatePostResponse(req.body, validateCallback);
+  } else if (req.body &#x26;&#x26; req.body.SAMLRequest) {
+      this._saml.validatePostRequest(req.body, validateCallback);
+  } else {
+    var requestHandler = {
+      &#x27;login-request&#x27;: function() {
+        if (self._authnRequestBinding === &#x27;HTTP-POST&#x27;) {
+          this._saml.getAuthorizeForm(req, function(err, data) {
+            if (err) {
+              self.error(err);
+            } else {
+              var res = req.res;
+              res.send(data);
+            }
+          });
+        } else { // Defaults to HTTP-Redirect
+          this._saml.getAuthorizeUrl(req, redirectIfSuccess);
+        }
+      }.bind(self),
+      &#x27;logout-request&#x27;: function() {
+          this._saml.getLogoutUrl(req, redirectIfSuccess);
+      }.bind(self)
+    }[options.samlFallback];
+
+    if (typeof requestHandler !== &#x27;function&#x27;) {
+      return self.fail();
+    }
+
+    requestHandler();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata" id="apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Strategy.prototype.generateServiceProviderMetadata = function ( decryptionCert ) {
+  return this._saml.generateServiceProviderMetadata( decryptionCert );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.logout" id="apidoc.element.passport-saml.Strategy.prototype.logout">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.prototype.logout
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Strategy.prototype.logout = function (req, callback) {
+  this._saml.getLogoutUrl(req, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_" id="apidoc.element.passport-saml.Strategy.super_">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate" id="apidoc.element.passport-saml.Strategy.super_.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy.super_.prototype.authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Strategy.super_.prototype.authenticate = function (req, options) {
+  throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML" id="apidoc.module.passport-saml.SAML">module passport-saml.SAML</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.SAML" id="apidoc.element.passport-saml.SAML.SAML">
+        function <span class="apidocSignatureSpan">passport-saml.</span>SAML
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">SAML = function (options) {
+  var self = this;
+
+  this.options = this.initialize(options);
+  this.cacheProvider = this.options.cacheProvider;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype" id="apidoc.module.passport-saml.SAML.prototype">module passport-saml.SAML.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.certToPEM" id="apidoc.element.passport-saml.SAML.prototype.certToPEM">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>certToPEM
+        <span class="apidocSignatureSpan">(cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">certToPEM = function (cert) {
+  cert = cert.match(/.{1,64}/g).join(&#x27;\n&#x27;);
+
+  if (cert.indexOf(&#x27;-BEGIN CERTIFICATE-&#x27;) === -1)
+    cert = &#x22;-----BEGIN CERTIFICATE-----\n&#x22; + cert;
+  if (cert.indexOf(&#x27;-END CERTIFICATE-&#x27;) === -1)
+    cert = cert + &#x22;\n-----END CERTIFICATE-----\n&#x22;;
+
+  return cert;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError" id="apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>checkTimestampsValidityError
+        <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkTimestampsValidityError = function (nowMs, notBefore, notOnOrAfter) {
+  var self = this;
+  if (self.options.acceptedClockSkewMs == -1)
+      return null;
+
+  if (notBefore) {
+    var notBeforeMs = Date.parse(notBefore);
+    if (nowMs + self.options.acceptedClockSkewMs &#x3c; notBeforeMs)
+        return new Error(&#x27;SAML assertion not yet valid&#x27;);
+  }
+  if (notOnOrAfter) {
+    var notOnOrAfterMs = Date.parse(notOnOrAfter);
+    if (nowMs - self.options.acceptedClockSkewMs &#x3e;= notOnOrAfterMs)
+      return new Error(&#x27;SAML assertion expired&#x27;);
+  }
+
+  return null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest" id="apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateAuthorizeRequest
+        <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateAuthorizeRequest = function (req, isPassive, callback) {
+  var self = this;
+  var id = &#x22;_&#x22; + self.generateUniqueID();
+  var instant = self.generateInstant();
+  var forceAuthn = self.options.forceAuthn || false;
+
+  Q.fcall(function() {
+    if(self.options.validateInResponseTo) {
+      return Q.ninvoke(self.cacheProvider, &#x27;save&#x27;, id, instant);
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var request = {
+      &#x27;samlp:AuthnRequest&#x27;: {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@ID&#x27;: id,
+        &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+        &#x27;@IssueInstant&#x27;: instant,
+        &#x27;@ProtocolBinding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+        &#x27;@AssertionConsumerServiceURL&#x27;: self.getCallbackUrl(req),
+        &#x27;@Destination&#x27;: self.options.entryPoint,
+        &#x27;saml:Issuer&#x27; : {
+          &#x27;@xmlns:saml&#x27; : &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.issuer
+        }
+      }
+    };
+
+    if (isPassive)
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@IsPassive&#x27;] = true;
+
+    if (forceAuthn) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@ForceAuthn&#x27;] = true;
+    }
+
+    if (self.options.identifierFormat) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:NameIDPolicy&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Format&#x27;: self.options.identifierFormat,
+        &#x27;@AllowCreate&#x27;: &#x27;true&#x27;
+      };
+    }
+
+    if (!self.options.disableRequestedAuthnContext) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:RequestedAuthnContext&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Comparison&#x27;: &#x27;exact&#x27;,
+        &#x27;saml:AuthnContextClassRef&#x27;: {
+          &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.authnContext
+        }
+      };
+    }
+
+    if (self.options.attributeConsumingServiceIndex) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@AttributeConsumingServiceIndex&#x27;] = self.options.attributeConsumingServiceIndex;
+    }
+
+    callback(null, xmlbuilder.create(request).end());
+  })
+  .fail(function(err){
+    callback(err);
+  })
+  .done();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateInstant" id="apidoc.element.passport-saml.SAML.prototype.generateInstant">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateInstant
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateInstant = function () {
+  return new Date().toISOString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutRequest
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateLogoutRequest = function (req) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutRequest&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;saml:NameID&#x27; : {
+        &#x27;@Format&#x27;: req.user.nameIDFormat,
+        &#x27;#text&#x27;: req.user.nameID
+      }
+    }
+  };
+
+  if (typeof(req.user.nameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@NameQualifier&#x27;] = req.user.nameQualifier;
+  }
+
+  if (typeof(req.user.spNameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@SPNameQualifier&#x27;] = req.user.spNameQualifier;
+  }
+
+  if (req.user.sessionIndex) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml2p:SessionIndex&#x27;] = {
+      &#x27;@xmlns:saml2p&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;#text&#x27;: req.user.sessionIndex
+    };
+  }
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutResponse
+        <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateLogoutResponse = function (req, logoutRequest) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutResponse&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;@InResponseTo&#x27;: logoutRequest.ID,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;samlp:Status&#x27;: {
+        &#x27;samlp:StatusCode&#x27;: {
+          &#x27;@Value&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:status:Success&#x27;
+        }
+      }
+    }
+  };
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata" id="apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateServiceProviderMetadata = function ( decryptionCert ) {
+  var metadata = {
+    &#x27;EntityDescriptor&#x27; : {
+      &#x27;@xmlns&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:metadata&#x27;,
+      &#x27;@xmlns:ds&#x27;: &#x27;http://www.w3.org/2000/09/xmldsig#&#x27;,
+      &#x27;@entityID&#x27;: this.options.issuer,
+      &#x27;@ID&#x27;: this.options.issuer.replace(/\W/g, &#x27;_&#x27;),
+      &#x27;SPSSODescriptor&#x27; : {
+        &#x27;@protocolSupportEnumeration&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      },
+    }
+  };
+
+  if (this.options.decryptionPvk) {
+    if (!decryptionCert) {
+      throw new Error(
+        &#x22;Missing decryptionCert while generating metadata for decrypting service provider&#x22;);
+    }
+
+    decryptionCert = decryptionCert.replace( /-+BEGIN CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /-+END CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /\r\n/g, &#x27;\n&#x27; );
+
+    metadata.EntityDescriptor.SPSSODescriptor.KeyDescriptor = {
+      &#x27;ds:KeyInfo&#x27; : {
+        &#x27;ds:X509Data&#x27; : {
+          &#x27;ds:X509Certificate&#x27;: {
+            &#x27;#text&#x27;: decryptionCert
+          }
+        }
+      },
+      &#x27;#list&#x27; : [
+        // this should be the set that the xmlenc library supports
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes256-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes128-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#tripledes-cbc&#x27; } },
+      ]
+    };
+  }
+
+  if (this.options.logoutCallbackUrl) {
+    metadata.EntityDescriptor.SPSSODescriptor.SingleLogoutService = {
+      &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+      &#x27;@Location&#x27;: this.options.logoutCallbackUrl
+    };
+  }
+
+  metadata.EntityDescriptor.SPSSODescriptor.NameIDFormat = this.options.identifierFormat;
+  metadata.EntityDescriptor.SPSSODescriptor.AssertionConsumerService = {
+    &#x27;@index&#x27;: &#x27;1&#x27;,
+    &#x27;@isDefault&#x27;: &#x27;true&#x27;,
+    &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+    &#x27;@Location&#x27;: this.getCallbackUrl({})
+  };
+
+  return xmlbuilder.create(metadata).end({ pretty: true, indent: &#x27;  &#x27;, newline: &#x27;\n&#x27; });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID" id="apidoc.element.passport-saml.SAML.prototype.generateUniqueID">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateUniqueID
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateUniqueID = function () {
+  var chars = &#x22;abcdef0123456789&#x22;;
+  var uniqueID = &#x22;&#x22;;
+  for (var i = 0; i &#x3c; 20; i++) {
+    uniqueID += chars.substr(Math.floor((Math.random()*15)), 1);
+  }
+  return uniqueID;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams" id="apidoc.element.passport-saml.SAML.prototype.getAdditionalParams">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAdditionalParams
+        <span class="apidocSignatureSpan">(req, operation)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAdditionalParams = function (req, operation) {
+  var additionalParams = {};
+
+  var RelayState = req.query &#x26;&#x26; req.query.RelayState || req.body &#x26;&#x26; req.body.RelayState;
+  if (RelayState) {
+    additionalParams.RelayState = RelayState;
+  }
+
+  var optionsAdditionalParams = this.options.additionalParams || {};
+  Object.keys(optionsAdditionalParams).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParams[k];
+  });
+
+  var optionsAdditionalParamsForThisOperation = {};
+  if (operation == &#x22;authorize&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalAuthorizeParams || {};
+  }
+  if (operation == &#x22;logout&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalLogoutParams || {};
+  }
+
+  Object.keys(optionsAdditionalParamsForThisOperation).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParamsForThisOperation[k];
+  });
+
+  return additionalParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeForm
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAuthorizeForm = function (req, callback) {
+  var self = this;
+
+  // The quoteattr() function is used in a context, where the result will not be evaluated by javascript
+  // but must be interpreted by an XML or HTML parser, and it must absolutely avoid breaking the syntax
+  // of an element attribute.
+  var quoteattr = function(s, preserveCR) {
+    preserveCR = preserveCR ? &#x27;&#x26;#13;&#x27; : &#x27;\n&#x27;;
+    return (&#x27;&#x27; + s) // Forces the conversion to string.
+      .replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;) // This MUST be the 1st replacement.
+      .replace(/&#x27;/g, &#x27;&#x26;apos;&#x27;) // The 4 other predefined entities, required.
+      .replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;)
+      .replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;)
+      .replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;)
+       // Add other replacements here for HTML only
+       // Or for XML, only if the named entities are defined in its DTD.
+      .replace(/\r\n/g, preserveCR) // Must be before the next replacement.
+      .replace(/[\r\n]/g, preserveCR);
+  };
+
+  var getAuthorizeFormHelper = function(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var operation = &#x27;authorize&#x27;;
+    var additionalParameters = self.getAdditionalParams(req, operation);
+    var samlMessage = {
+      SAMLRequest: buffer.toString(&#x27;base64&#x27;)
+    };
+
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k] || &#x27;&#x27;;
+    });
+
+    var formInputs = Object.keys(samlMessage).map(function(k) {
+      return &#x27;&#x3c;input type=&#x22;hidden&#x22; name=&#x22;&#x27; + k + &#x27;&#x22; value=&#x22;&#x27; + quoteattr(samlMessage[k]) + &#x27;&#x22; /&#x3e;&#x27;;
+    }).join(&#x27;\r\n&#x27;);
+
+    callback(null, [
+      &#x27;&#x3c;!DOCTYPE html&#x3e;&#x27;,
+      &#x27;&#x3c;html&#x3e;&#x27;,
+      &#x27;&#x3c;head&#x3e;&#x27;,
+      &#x27;&#x3c;meta charset=&#x22;utf-8&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;meta http-equiv=&#x22;x-ua-compatible&#x22; content=&#x22;ie=edge&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;/head&#x3e;&#x27;,
+      &#x27;&#x3c;body onload=&#x22;document.forms[0].submit()&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;noscript&#x3e;&#x27;,
+      &#x27;&#x3c;p&#x3e;&#x3c;strong&#x3e;Note:&#x3c;/strong&#x3e; Since your browser does not support JavaScript, you must press the button below once to proceed
+.&#x3c;/p&#x3e;&#x27;,
+      &#x27;&#x3c;/noscript&#x3e;&#x27;,
+      &#x27;&#x3c;form method=&#x22;post&#x22; action=&#x22;&#x27; + encodeURI(self.options.entryPoint) + &#x27;&#x22;&#x3e;&#x27;,
+      formInputs,
+      &#x27;&#x3c;input type=&#x22;submit&#x22; value=&#x22;Submit&#x22; /&#x3e;&#x27;,
+      &#x27;&#x3c;/form&#x3e;&#x27;,
+      &#x27;&#x3c;script&#x3e;document.forms[0].style.display=&#x22;none&#x22;;&#x3c;/script&#x3e;&#x27;, // Hide the form if JavaScript is enabled
+      &#x27;&#x3c;/body&#x3e;&#x27;,
+      &#x27;&#x3c;/html&#x3e;&#x27;
+    ].join(&#x27;\r\n&#x27;));
+  };
+
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request) {
+    if (err) {
+      return callback(err);
+    }
+
+    if (self.options.skipRequestCompression) {
+      getAuthorizeFormHelper(null, new Buffer(request, &#x27;utf8&#x27;));
+    } else {
+      zlib.deflateRaw(request, getAuthorizeFormHelper);
+    }
+  });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAuthorizeUrl = function (req, callback) {
+  var self = this;
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request){
+    if (err)
+      return callback(err);
+    var operation = &#x27;authorize&#x27;;
+    self.requestToUrl(request, null, operation, self.getAdditionalParams(req, operation), callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl" id="apidoc.element.passport-saml.SAML.prototype.getCallbackUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getCallbackUrl
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getCallbackUrl = function (req) {
+    // Post-auth destination
+  if (this.options.callbackUrl) {
+    return this.options.callbackUrl;
+  } else {
+    var host;
+    if (req.headers) {
+      host = req.headers.host;
+    } else {
+      host = this.options.host;
+    }
+    return this.getProtocol(req) + host + this.options.path;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutResponseUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLogoutResponseUrl = function (req, callback) {
+  var response = this.generateLogoutResponse(req, req.samlLogoutRequest);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(null, response, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLogoutUrl = function (req, callback) {
+  var request = this.generateLogoutRequest(req);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(request, null, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getProtocol" id="apidoc.element.passport-saml.SAML.prototype.getProtocol">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getProtocol
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getProtocol = function (req) {
+  return this.options.protocol || (req.protocol || &#x27;http&#x27;).concat(&#x27;://&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.initialize" id="apidoc.element.passport-saml.SAML.prototype.initialize">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">initialize = function (options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!options.path) {
+    options.path = &#x27;/saml/consume&#x27;;
+  }
+
+  if (!options.host) {
+    options.host = &#x27;localhost&#x27;;
+  }
+
+  if (!options.issuer) {
+    options.issuer = &#x27;onelogin_saml&#x27;;
+  }
+
+  if (options.identifierFormat === undefined) {
+    options.identifierFormat = &#x22;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&#x22;;
+  }
+
+  if (options.authnContext === undefined) {
+    options.authnContext = &#x22;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&#x22;;
+  }
+
+  if (!options.acceptedClockSkewMs) {
+    // default to no skew
+    options.acceptedClockSkewMs = 0;
+  }
+
+  if(!options.validateInResponseTo){
+    options.validateInResponseTo = false;
+  }
+
+  if(!options.requestIdExpirationPeriodMs){
+    options.requestIdExpirationPeriodMs = 28800000;  // 8 hours
+  }
+
+  if(!options.cacheProvider){
+      options.cacheProvider = new InMemoryCacheProvider(
+          {keyExpirationPeriodMs: options.requestIdExpirationPeriodMs });
+  }
+
+  if (!options.logoutUrl) {
+    // Default to Entry Point
+    options.logoutUrl = options.entryPoint || &#x27;&#x27;;
+  }
+
+  // sha1 or sha256
+  if (!options.signatureAlgorithm) {
+    options.signatureAlgorithm = &#x27;sha1&#x27;;
+  }
+
+  return options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion" id="apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>processValidlySignedAssertion
+        <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">processValidlySignedAssertion = function (xml, inResponseTo, callback) {
+  var self = this;
+  var msg;
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var nowMs = new Date().getTime();
+  var profile = {};
+  var assertion;
+  var parser = new xml2js.Parser(parserConfig);
+  Q.ninvoke(parser, &#x27;parseString&#x27;, xml)
+  .then(function(doc) {
+    assertion = doc.Assertion;
+
+    var issuer = assertion.Issuer;
+    if (issuer) {
+      profile.issuer = issuer[0];
+    }
+
+    var authnStatement = assertion.AuthnStatement;
+    if (authnStatement) {
+      if (authnStatement[0].$ &#x26;&#x26; authnStatement[0].$.SessionIndex) {
+        profile.sessionIndex = authnStatement[0].$.SessionIndex;
+      }
+    }
+
+    var subject = assertion.Subject;
+    var subjectConfirmation, confirmData;
+    if (subject) {
+      var nameID = subject[0].NameID;
+      if (nameID) {
+        profile.nameID = nameID[0]._ || nameID[0];
+
+        if (nameID[0].$ &#x26;&#x26; nameID[0].$.Format) {
+          profile.nameIDFormat = nameID[0].$.Format;
+          profile.nameQualifier = nameID[0].$.NameQualifier;
+          profile.spNameQualifier = nameID[0].$.SPNameQualifier;
+        }
+      }
+
+      subjectConfirmation = subject[0].SubjectConfirmation ?
+                            subject[0].SubjectConfirmation[0] : null;
+      confirmData = subjectConfirmation &#x26;&#x26; subjectConfirmation.SubjectConfirmationData ?
+                    subjectConfirmation.SubjectConfirmationData[0] : null;
+      if (subject[0].SubjectConfirmation &#x26;&#x26; subject[0].SubjectConfirmation.length &#x3e; 1) {
+        msg = &#x27;Unable to process multiple SubjectConfirmations in SAML assertion&#x27;;
+        throw new Error(msg);
+      }
+
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectNotBefore = confirmData.$.NotBefore;
+          var subjectNotOnOrAfter = confirmData.$.NotOnOrAfter;
+
+          var subjErr = self.checkTimestampsValidityError(
+                          nowMs, subjectNotBefore, subjectNotOnOrAfter);
+          if (subjErr) {
+            throw subjErr;
+          }
+        }
+      }
+    }
+
+    // Test to see that if we have a SubjectConfirmation InResponseTo that it matches
+    // the &#x27;InResponseTo&#x27; attribute set in the Response
+    if (self.options.validateInResponseTo) {
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectInResponseTo = confirmData.$.InResponseTo;
+          if (inResponseTo &#x26;&#x26; subjectInResponseTo &#x26;&#x26; subjectInResponseTo != inResponseTo) {
+            return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo)
+              .then(function(){
+                throw new Error(&#x27;InResponseTo is not valid&#x27;);
+              });
+          } else if (subjectInResponseTo) {
+            var foundValidInResponseTo = false;
+            return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, subjectInResponseTo)
+              .then(function(result){
+                if (result) {
+                  var createdAt = new Date(result);
+                  if (nowMs &#x3c; createdAt.getTime() + self.options.requestIdExpirationPeriodMs)
+                    foundValidInResponseTo = true;
+                }
+                return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo );
+              })
+              .then(function(){
+                if (!foundValidInResponseTo) {
+                  throw new Error(&#x27;InResponseTo is not valid&#x27;);
+                }
+                return Q();
+              });
+          }
+        }
+      } else {
+        return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo);
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var conditions = assertion.Conditions ? assertion.Conditions[0] : null;
+    if (assertion.Conditions &#x26;&#x26; assertion.Conditions.length &#x3e; 1) {
+      msg = &#x27;Unable to process multiple conditions in SAML assertion&#x27;;
+      throw new Error(msg);
+    }
+    if(conditions &#x26;&#x26; conditions.$) {
+      var conErr = self.checkTimestampsValidityError(
+                    nowMs, conditions.$.NotBefore, conditions.$.NotOnOrAfter);
+      if(conErr)
+        throw conErr; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl" id="apidoc.element.passport-saml.SAML.prototype.requestToUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>requestToUrl
+        <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requestToUrl = function (request, response, operation, additionalParameters, callback) {
+  var self = this;
+  if (self.options.skipRequestCompression)
+    requestToUrlHelper(null, new Buffer(request || response, &#x27;utf8&#x27;));
+  else
+    zlib.deflateRaw(request || response, requestToUrlHelper);
+
+  function requestToUrlHelper(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var base64 = buffer.toString(&#x27;base64&#x27;);
+    var target = url.parse(self.options.entryPoint, true);
+
+    if (operation === &#x27;logout&#x27;) {
+      if (self.options.logoutUrl) {
+        target = url.parse(self.options.logoutUrl, true);
+      }
+    } else if (operation !== &#x27;authorize&#x27;) {
+        return callback(new Error(&#x22;Unknown operation: &#x22;+operation));
+    }
+
+    var samlMessage = request ? {
+      SAMLRequest: base64
+    } : {
+      SAMLResponse: base64
+    };
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k];
+    });
+
+    if (self.options.privateCert) {
+      // sets .SigAlg and .Signature
+      self.signRequest(samlMessage);
+    }
+    Object.keys(samlMessage).forEach(function(k) {
+      target.query[k] = samlMessage[k];
+    });
+
+    // Delete &#x27;search&#x27; to for pulling query string from &#x27;query&#x27;
+    // https://nodejs.org/api/url.html#url_url_format_urlobj
+    delete target.search;
+
+    callback(null, url.format(target));
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.signRequest" id="apidoc.element.passport-saml.SAML.prototype.signRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>signRequest
+        <span class="apidocSignatureSpan">(samlMessage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">signRequest = function (samlMessage) {
+  var signer;
+  var samlMessageToSign = {};
+  switch(this.options.signatureAlgorithm) {
+    case &#x27;sha256&#x27;:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA256&#x27;);
+      break;
+    default:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA1&#x27;);
+      break;
+  }
+  if (samlMessage.SAMLRequest) {
+    samlMessageToSign.SAMLRequest = samlMessage.SAMLRequest;
+  }
+  if (samlMessage.SAMLResponse) {
+    samlMessageToSign.SAMLResponse = samlMessage.SAMLResponse;
+  }
+  if (samlMessage.RelayState) {
+    samlMessageToSign.RelayState = samlMessage.RelayState;
+  }
+  if (samlMessage.SigAlg) {
+    samlMessageToSign.SigAlg = samlMessage.SigAlg;
+  }
+  signer.update(querystring.stringify(samlMessageToSign));
+  samlMessage.Signature = signer.sign(this.options.privateCert, &#x27;base64&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest" id="apidoc.element.passport-saml.SAML.prototype.validatePostRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostRequest
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validatePostRequest = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLRequest, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var dom = new xmldom.DOMParser().parseFromString(xml);
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var parser = new xml2js.Parser(parserConfig);
+  parser.parseString(xml, function (err, doc) {
+    if (err) {
+      return callback(err);
+    }
+
+    // Check if this document has a valid top-level signature
+    if (self.options.cert &#x26;&#x26; !self.validateSignature(xml, dom.documentElement, self.options.cert)) {
+      return callback(new Error(&#x27;Invalid signature&#x27;));
+    }
+
+    processValidlySignedPostRequest(self, doc, callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse" id="apidoc.element.passport-saml.SAML.prototype.validatePostResponse">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostResponse
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validatePostResponse = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLResponse, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var doc = new xmldom.DOMParser().parseFromString(xml);
+
+  var inResponseTo = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/@InResponseTo&#x22;);
+  if(inResponseTo){
+    inResponseTo = inResponseTo.length ? inResponseTo[0].nodeValue : null;
+  }
+
+  Q.fcall(function(){
+    if(self.options.validateInResponseTo){
+      if (inResponseTo) {
+        return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, inResponseTo)
+          .then(function(result) {
+            if (!result)
+              throw new Error(&#x27;InResponseTo is not valid&#x27;);
+            return Q();
+          });
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function() {
+    // Check if this document has a valid top-level signature
+    var validSignature = false;
+    if (self.options.cert &#x26;&#x26; self.validateSignature(xml, doc.documentElement, self.options.cert)) {
+      validSignature = true;
+    }
+
+    var assertions = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+    var encryptedAssertions = xpath(doc,
+      &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;EncryptedAssertion&#x27;]&#x22;);
+
+    if (assertions.length + encryptedAssertions.length &#x3e; 1) {
+      // There&#x27;s no reason I know of that we want to handle multiple assertions, and it seems like a
+      //   potential risk vector for signature scope issues, so treat this as an invalid signature
+      throw new Error(&#x27;Invalid signature&#x27;);
+    }
+
+    if (assertions.length == 1) {
+      if (self.options.cert &#x26;&#x26;
+          !validSignature &#x26;&#x26;
+          !self.validateSignature(xml, assertions[0], self.options.cert)) {
+        throw new Error(&#x27;Invalid signature&#x27;);
+      }
+      return self.processValidlySignedAssertion(assertions[0].toString(), inResponseTo, callback);
+    }
+
+    if (encryptedAssertions.length == 1) {
+      if (!self.options.decryptionPvk)
+        throw new Error(&#x27;No decryption key for encrypted SAML response&#x27;);
+
+      var encryptedDatas = xpath( encryptedAssertions[0], &#x22;./*[local-name()=&#x27;EncryptedData&#x27;]&#x22;);
+      if (encryptedDatas.length != 1)
+        throw new Error(&#x27;Invalid signature&#x27;);
+      var encryptedDataXml = encryptedDatas[0].toString();
+
+      var xmlencOptions = { key: self.options.decryptionPvk };
+      return Q.ninvoke(xmlenc, &#x27;decrypt&#x27;, encryptedDataXml, xmlencOptions)
+        .then(function(decryptedXml) {
+          var decryptedDoc = new xmldom.DOMParser().parseFromString(decryptedXml);
+          var decryptedAssertions = xpath(decryptedDoc, &#x22;/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+          if (decryptedAssertions.length != 1)
+            throw new Error(&#x27;Invalid EncryptedAssertion content&#x27;);
+
+          if (self.options.cert &#x26;&#x26;
+              !validSignature &#x26;&#x26;
+              !self.validateSignature(decryptedXml, decryptedAssertions[0], self.options.cert))
+            throw new Error(&#x27;Invalid signature&#x27;);
+
+          self.processValidlySignedAssertion(decryptedAssertions[0].toString(), inResponseTo, callback);
+        });
+    }
+
+    // If there&#x27;s no assertion, fall back on xml2js response parsing for the status &#x26;
+    //   LogoutResponse code.
+
+    var parserConfig = {
+      explicitRoot: true,
+      explicitCharkey: true,
+      tagNameProcessors: [xml2js.processors.stripPrefix]
+    };
+    var parser = new xml2js.Parser(parserConfig);
+    return Q.ninvoke( parser, &#x27;parseString&#x27;, xml)
+      .then(function(doc) {
+        var response = doc.Response;
+        if (response) {
+          var assertion = response.Assertion;
+          if (!assertion) {
+            var status = response.Status;
+            if (status) {
+              var statusCode = status[0].StatusCode;
+              if (statusCode &#x26;&#x26; statusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:Responder&#x22;) {
+                var nestedStatusCode = statusCode[0].StatusCode;
+                if (nestedStatusCode &#x26;&#x26; nestedStatusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:NoPassive&#x22;) {
+                  if (self.options.cert &#x26;&#x26; !validSignature) {
+                    throw new Error(&#x27;Invalid signature&#x27;); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validateSignature" id="apidoc.element.passport-saml.SAML.prototype.validateSignature">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validateSignature
+        <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateSignature = function (fullXml, currentNode, cert) {
+  var self = this;
+  var xpathSigQuery = &#x22;.//*[local-name(.)=&#x27;Signature&#x27; and &#x22; +
+                      &#x22;namespace-uri(.)=&#x27;http://www.w3.org/2000/09/xmldsig#&#x27;]&#x22;;
+  var signatures = xpath(currentNode, xpathSigQuery);
+  // This function is expecting to validate exactly one signature, so if we find more or fewer
+  //   than that, reject.
+  if (signatures.length != 1)
+    return false;
+  var signature = signatures[0];
+  var sig = new xmlCrypto.SignedXml();
+  sig.keyInfoProvider = {
+    getKeyInfo: function (key) {
+      return &#x22;&#x3c;X509Data&#x3e;&#x3c;/X509Data&#x3e;&#x22;;
+    },
+    getKey: function (keyInfo) {
+      return self.certToPEM(cert);
+    }
+  };
+  sig.loadSignature(signature);
+  // We expect each signature to contain exactly one reference to the top level of the xml we
+  //   are validating, so if we see anything else, reject.
+  if (sig.references.length != 1 )
+    return false;
+  var refUri = sig.references[0].uri;
+  var refId = (refUri[0] === &#x27;#&#x27;) ? refUri.substring(1) : refUri;
+  // If we can&#x27;t find the reference at the top level, reject
+  var idAttribute = currentNode.getAttribute(&#x27;ID&#x27;) ? &#x27;ID&#x27; : &#x27;Id&#x27;;
+  if (currentNode.getAttribute(idAttribute) != refId)
+    return false;
+  // If we find any extra referenced nodes, reject.  (xml-crypto only verifies one digest, so
+  //   multiple candidate references is bad news)
+  var totalReferencedNodes = xpath(currentNode.ownerDocument,
+                                  &#x22;//*[@&#x22; + idAttribute + &#x22;=&#x27;&#x22; + refId + &#x22;&#x27;]&#x22;);
+  if (totalReferencedNodes.length &#x3e; 1)
+    return false;
+  return sig.checkSignature(fullXml);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.certToPEM" id="apidoc.module.passport-saml.SAML.prototype.certToPEM">module passport-saml.SAML.prototype.certToPEM</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.certToPEM.certToPEM" id="apidoc.element.passport-saml.SAML.prototype.certToPEM.certToPEM">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>certToPEM
+        <span class="apidocSignatureSpan">(cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">certToPEM = function (cert) {
+  cert = cert.match(/.{1,64}/g).join(&#x27;\n&#x27;);
+
+  if (cert.indexOf(&#x27;-BEGIN CERTIFICATE-&#x27;) === -1)
+    cert = &#x22;-----BEGIN CERTIFICATE-----\n&#x22; + cert;
+  if (cert.indexOf(&#x27;-END CERTIFICATE-&#x27;) === -1)
+    cert = cert + &#x22;\n-----END CERTIFICATE-----\n&#x22;;
+
+  return cert;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.checkTimestampsValidityError" id="apidoc.module.passport-saml.SAML.prototype.checkTimestampsValidityError">module passport-saml.SAML.prototype.checkTimestampsValidityError</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError.checkTimestampsValidityError" id="apidoc.element.passport-saml.SAML.prototype.checkTimestampsValidityError.checkTimestampsValidityError">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>checkTimestampsValidityError
+        <span class="apidocSignatureSpan">(nowMs, notBefore, notOnOrAfter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkTimestampsValidityError = function (nowMs, notBefore, notOnOrAfter) {
+  var self = this;
+  if (self.options.acceptedClockSkewMs == -1)
+      return null;
+
+  if (notBefore) {
+    var notBeforeMs = Date.parse(notBefore);
+    if (nowMs + self.options.acceptedClockSkewMs &#x3c; notBeforeMs)
+        return new Error(&#x27;SAML assertion not yet valid&#x27;);
+  }
+  if (notOnOrAfter) {
+    var notOnOrAfterMs = Date.parse(notOnOrAfter);
+    if (nowMs - self.options.acceptedClockSkewMs &#x3e;= notOnOrAfterMs)
+      return new Error(&#x27;SAML assertion expired&#x27;);
+  }
+
+  return null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateAuthorizeRequest" id="apidoc.module.passport-saml.SAML.prototype.generateAuthorizeRequest">module passport-saml.SAML.prototype.generateAuthorizeRequest</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest.generateAuthorizeRequest" id="apidoc.element.passport-saml.SAML.prototype.generateAuthorizeRequest.generateAuthorizeRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateAuthorizeRequest
+        <span class="apidocSignatureSpan">(req, isPassive, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateAuthorizeRequest = function (req, isPassive, callback) {
+  var self = this;
+  var id = &#x22;_&#x22; + self.generateUniqueID();
+  var instant = self.generateInstant();
+  var forceAuthn = self.options.forceAuthn || false;
+
+  Q.fcall(function() {
+    if(self.options.validateInResponseTo) {
+      return Q.ninvoke(self.cacheProvider, &#x27;save&#x27;, id, instant);
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var request = {
+      &#x27;samlp:AuthnRequest&#x27;: {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@ID&#x27;: id,
+        &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+        &#x27;@IssueInstant&#x27;: instant,
+        &#x27;@ProtocolBinding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+        &#x27;@AssertionConsumerServiceURL&#x27;: self.getCallbackUrl(req),
+        &#x27;@Destination&#x27;: self.options.entryPoint,
+        &#x27;saml:Issuer&#x27; : {
+          &#x27;@xmlns:saml&#x27; : &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.issuer
+        }
+      }
+    };
+
+    if (isPassive)
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@IsPassive&#x27;] = true;
+
+    if (forceAuthn) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@ForceAuthn&#x27;] = true;
+    }
+
+    if (self.options.identifierFormat) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:NameIDPolicy&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Format&#x27;: self.options.identifierFormat,
+        &#x27;@AllowCreate&#x27;: &#x27;true&#x27;
+      };
+    }
+
+    if (!self.options.disableRequestedAuthnContext) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;samlp:RequestedAuthnContext&#x27;] = {
+        &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+        &#x27;@Comparison&#x27;: &#x27;exact&#x27;,
+        &#x27;saml:AuthnContextClassRef&#x27;: {
+          &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+          &#x27;#text&#x27;: self.options.authnContext
+        }
+      };
+    }
+
+    if (self.options.attributeConsumingServiceIndex) {
+      request[&#x27;samlp:AuthnRequest&#x27;][&#x27;@AttributeConsumingServiceIndex&#x27;] = self.options.attributeConsumingServiceIndex;
+    }
+
+    callback(null, xmlbuilder.create(request).end());
+  })
+  .fail(function(err){
+    callback(err);
+  })
+  .done();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateInstant" id="apidoc.module.passport-saml.SAML.prototype.generateInstant">module passport-saml.SAML.prototype.generateInstant</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateInstant.generateInstant" id="apidoc.element.passport-saml.SAML.prototype.generateInstant.generateInstant">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateInstant
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateInstant = function () {
+  return new Date().toISOString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateLogoutRequest" id="apidoc.module.passport-saml.SAML.prototype.generateLogoutRequest">module passport-saml.SAML.prototype.generateLogoutRequest</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest.generateLogoutRequest" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutRequest.generateLogoutRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutRequest
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateLogoutRequest = function (req) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutRequest&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;saml:NameID&#x27; : {
+        &#x27;@Format&#x27;: req.user.nameIDFormat,
+        &#x27;#text&#x27;: req.user.nameID
+      }
+    }
+  };
+
+  if (typeof(req.user.nameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@NameQualifier&#x27;] = req.user.nameQualifier;
+  }
+
+  if (typeof(req.user.spNameQualifier) !== &#x27;undefined&#x27;) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml:NameID&#x27;][&#x27;@SPNameQualifier&#x27;] = req.user.spNameQualifier;
+  }
+
+  if (req.user.sessionIndex) {
+    request[&#x27;samlp:LogoutRequest&#x27;][&#x27;saml2p:SessionIndex&#x27;] = {
+      &#x27;@xmlns:saml2p&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;#text&#x27;: req.user.sessionIndex
+    };
+  }
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateLogoutResponse" id="apidoc.module.passport-saml.SAML.prototype.generateLogoutResponse">module passport-saml.SAML.prototype.generateLogoutResponse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse.generateLogoutResponse" id="apidoc.element.passport-saml.SAML.prototype.generateLogoutResponse.generateLogoutResponse">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateLogoutResponse
+        <span class="apidocSignatureSpan">(req, logoutRequest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateLogoutResponse = function (req, logoutRequest) {
+  var id = &#x22;_&#x22; + this.generateUniqueID();
+  var instant = this.generateInstant();
+
+  var request = {
+    &#x27;samlp:LogoutResponse&#x27; : {
+      &#x27;@xmlns:samlp&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      &#x27;@xmlns:saml&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:assertion&#x27;,
+      &#x27;@ID&#x27;: id,
+      &#x27;@Version&#x27;: &#x27;2.0&#x27;,
+      &#x27;@IssueInstant&#x27;: instant,
+      &#x27;@Destination&#x27;: this.options.logoutUrl,
+      &#x27;@InResponseTo&#x27;: logoutRequest.ID,
+      &#x27;saml:Issuer&#x27; : {
+        &#x27;#text&#x27;: this.options.issuer
+      },
+      &#x27;samlp:Status&#x27;: {
+        &#x27;samlp:StatusCode&#x27;: {
+          &#x27;@Value&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:status:Success&#x27;
+        }
+      }
+    }
+  };
+
+  return xmlbuilder.create(request).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateServiceProviderMetadata" id="apidoc.module.passport-saml.SAML.prototype.generateServiceProviderMetadata">module passport-saml.SAML.prototype.generateServiceProviderMetadata</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata" id="apidoc.element.passport-saml.SAML.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateServiceProviderMetadata = function ( decryptionCert ) {
+  var metadata = {
+    &#x27;EntityDescriptor&#x27; : {
+      &#x27;@xmlns&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:metadata&#x27;,
+      &#x27;@xmlns:ds&#x27;: &#x27;http://www.w3.org/2000/09/xmldsig#&#x27;,
+      &#x27;@entityID&#x27;: this.options.issuer,
+      &#x27;@ID&#x27;: this.options.issuer.replace(/\W/g, &#x27;_&#x27;),
+      &#x27;SPSSODescriptor&#x27; : {
+        &#x27;@protocolSupportEnumeration&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:protocol&#x27;,
+      },
+    }
+  };
+
+  if (this.options.decryptionPvk) {
+    if (!decryptionCert) {
+      throw new Error(
+        &#x22;Missing decryptionCert while generating metadata for decrypting service provider&#x22;);
+    }
+
+    decryptionCert = decryptionCert.replace( /-+BEGIN CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /-+END CERTIFICATE-+\r?\n?/, &#x27;&#x27; );
+    decryptionCert = decryptionCert.replace( /\r\n/g, &#x27;\n&#x27; );
+
+    metadata.EntityDescriptor.SPSSODescriptor.KeyDescriptor = {
+      &#x27;ds:KeyInfo&#x27; : {
+        &#x27;ds:X509Data&#x27; : {
+          &#x27;ds:X509Certificate&#x27;: {
+            &#x27;#text&#x27;: decryptionCert
+          }
+        }
+      },
+      &#x27;#list&#x27; : [
+        // this should be the set that the xmlenc library supports
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes256-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#aes128-cbc&#x27; } },
+        { &#x27;EncryptionMethod&#x27;: { &#x27;@Algorithm&#x27;: &#x27;http://www.w3.org/2001/04/xmlenc#tripledes-cbc&#x27; } },
+      ]
+    };
+  }
+
+  if (this.options.logoutCallbackUrl) {
+    metadata.EntityDescriptor.SPSSODescriptor.SingleLogoutService = {
+      &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+      &#x27;@Location&#x27;: this.options.logoutCallbackUrl
+    };
+  }
+
+  metadata.EntityDescriptor.SPSSODescriptor.NameIDFormat = this.options.identifierFormat;
+  metadata.EntityDescriptor.SPSSODescriptor.AssertionConsumerService = {
+    &#x27;@index&#x27;: &#x27;1&#x27;,
+    &#x27;@isDefault&#x27;: &#x27;true&#x27;,
+    &#x27;@Binding&#x27;: &#x27;urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST&#x27;,
+    &#x27;@Location&#x27;: this.getCallbackUrl({})
+  };
+
+  return xmlbuilder.create(metadata).end({ pretty: true, indent: &#x27;  &#x27;, newline: &#x27;\n&#x27; });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.generateUniqueID" id="apidoc.module.passport-saml.SAML.prototype.generateUniqueID">module passport-saml.SAML.prototype.generateUniqueID</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.generateUniqueID.generateUniqueID" id="apidoc.element.passport-saml.SAML.prototype.generateUniqueID.generateUniqueID">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>generateUniqueID
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateUniqueID = function () {
+  var chars = &#x22;abcdef0123456789&#x22;;
+  var uniqueID = &#x22;&#x22;;
+  for (var i = 0; i &#x3c; 20; i++) {
+    uniqueID += chars.substr(Math.floor((Math.random()*15)), 1);
+  }
+  return uniqueID;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getAdditionalParams" id="apidoc.module.passport-saml.SAML.prototype.getAdditionalParams">module passport-saml.SAML.prototype.getAdditionalParams</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAdditionalParams.getAdditionalParams" id="apidoc.element.passport-saml.SAML.prototype.getAdditionalParams.getAdditionalParams">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAdditionalParams
+        <span class="apidocSignatureSpan">(req, operation)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAdditionalParams = function (req, operation) {
+  var additionalParams = {};
+
+  var RelayState = req.query &#x26;&#x26; req.query.RelayState || req.body &#x26;&#x26; req.body.RelayState;
+  if (RelayState) {
+    additionalParams.RelayState = RelayState;
+  }
+
+  var optionsAdditionalParams = this.options.additionalParams || {};
+  Object.keys(optionsAdditionalParams).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParams[k];
+  });
+
+  var optionsAdditionalParamsForThisOperation = {};
+  if (operation == &#x22;authorize&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalAuthorizeParams || {};
+  }
+  if (operation == &#x22;logout&#x22;) {
+    optionsAdditionalParamsForThisOperation = this.options.additionalLogoutParams || {};
+  }
+
+  Object.keys(optionsAdditionalParamsForThisOperation).forEach(function(k) {
+    additionalParams[k] = optionsAdditionalParamsForThisOperation[k];
+  });
+
+  return additionalParams;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getAuthorizeForm" id="apidoc.module.passport-saml.SAML.prototype.getAuthorizeForm">module passport-saml.SAML.prototype.getAuthorizeForm</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm.getAuthorizeForm" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeForm.getAuthorizeForm">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeForm
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAuthorizeForm = function (req, callback) {
+  var self = this;
+
+  // The quoteattr() function is used in a context, where the result will not be evaluated by javascript
+  // but must be interpreted by an XML or HTML parser, and it must absolutely avoid breaking the syntax
+  // of an element attribute.
+  var quoteattr = function(s, preserveCR) {
+    preserveCR = preserveCR ? &#x27;&#x26;#13;&#x27; : &#x27;\n&#x27;;
+    return (&#x27;&#x27; + s) // Forces the conversion to string.
+      .replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;) // This MUST be the 1st replacement.
+      .replace(/&#x27;/g, &#x27;&#x26;apos;&#x27;) // The 4 other predefined entities, required.
+      .replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;)
+      .replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;)
+      .replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;)
+       // Add other replacements here for HTML only
+       // Or for XML, only if the named entities are defined in its DTD.
+      .replace(/\r\n/g, preserveCR) // Must be before the next replacement.
+      .replace(/[\r\n]/g, preserveCR);
+  };
+
+  var getAuthorizeFormHelper = function(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var operation = &#x27;authorize&#x27;;
+    var additionalParameters = self.getAdditionalParams(req, operation);
+    var samlMessage = {
+      SAMLRequest: buffer.toString(&#x27;base64&#x27;)
+    };
+
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k] || &#x27;&#x27;;
+    });
+
+    var formInputs = Object.keys(samlMessage).map(function(k) {
+      return &#x27;&#x3c;input type=&#x22;hidden&#x22; name=&#x22;&#x27; + k + &#x27;&#x22; value=&#x22;&#x27; + quoteattr(samlMessage[k]) + &#x27;&#x22; /&#x3e;&#x27;;
+    }).join(&#x27;\r\n&#x27;);
+
+    callback(null, [
+      &#x27;&#x3c;!DOCTYPE html&#x3e;&#x27;,
+      &#x27;&#x3c;html&#x3e;&#x27;,
+      &#x27;&#x3c;head&#x3e;&#x27;,
+      &#x27;&#x3c;meta charset=&#x22;utf-8&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;meta http-equiv=&#x22;x-ua-compatible&#x22; content=&#x22;ie=edge&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;/head&#x3e;&#x27;,
+      &#x27;&#x3c;body onload=&#x22;document.forms[0].submit()&#x22;&#x3e;&#x27;,
+      &#x27;&#x3c;noscript&#x3e;&#x27;,
+      &#x27;&#x3c;p&#x3e;&#x3c;strong&#x3e;Note:&#x3c;/strong&#x3e; Since your browser does not support JavaScript, you must press the button below once to proceed
+.&#x3c;/p&#x3e;&#x27;,
+      &#x27;&#x3c;/noscript&#x3e;&#x27;,
+      &#x27;&#x3c;form method=&#x22;post&#x22; action=&#x22;&#x27; + encodeURI(self.options.entryPoint) + &#x27;&#x22;&#x3e;&#x27;,
+      formInputs,
+      &#x27;&#x3c;input type=&#x22;submit&#x22; value=&#x22;Submit&#x22; /&#x3e;&#x27;,
+      &#x27;&#x3c;/form&#x3e;&#x27;,
+      &#x27;&#x3c;script&#x3e;document.forms[0].style.display=&#x22;none&#x22;;&#x3c;/script&#x3e;&#x27;, // Hide the form if JavaScript is enabled
+      &#x27;&#x3c;/body&#x3e;&#x27;,
+      &#x27;&#x3c;/html&#x3e;&#x27;
+    ].join(&#x27;\r\n&#x27;));
+  };
+
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request) {
+    if (err) {
+      return callback(err);
+    }
+
+    if (self.options.skipRequestCompression) {
+      getAuthorizeFormHelper(null, new Buffer(request, &#x27;utf8&#x27;));
+    } else {
+      zlib.deflateRaw(request, getAuthorizeFormHelper);
+    }
+  });
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getAuthorizeUrl" id="apidoc.module.passport-saml.SAML.prototype.getAuthorizeUrl">module passport-saml.SAML.prototype.getAuthorizeUrl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl.getAuthorizeUrl" id="apidoc.element.passport-saml.SAML.prototype.getAuthorizeUrl.getAuthorizeUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getAuthorizeUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getAuthorizeUrl = function (req, callback) {
+  var self = this;
+  self.generateAuthorizeRequest(req, self.options.passive, function(err, request){
+    if (err)
+      return callback(err);
+    var operation = &#x27;authorize&#x27;;
+    self.requestToUrl(request, null, operation, self.getAdditionalParams(req, operation), callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getCallbackUrl" id="apidoc.module.passport-saml.SAML.prototype.getCallbackUrl">module passport-saml.SAML.prototype.getCallbackUrl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getCallbackUrl.getCallbackUrl" id="apidoc.element.passport-saml.SAML.prototype.getCallbackUrl.getCallbackUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getCallbackUrl
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getCallbackUrl = function (req) {
+    // Post-auth destination
+  if (this.options.callbackUrl) {
+    return this.options.callbackUrl;
+  } else {
+    var host;
+    if (req.headers) {
+      host = req.headers.host;
+    } else {
+      host = this.options.host;
+    }
+    return this.getProtocol(req) + host + this.options.path;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getLogoutResponseUrl" id="apidoc.module.passport-saml.SAML.prototype.getLogoutResponseUrl">module passport-saml.SAML.prototype.getLogoutResponseUrl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl.getLogoutResponseUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutResponseUrl.getLogoutResponseUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutResponseUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLogoutResponseUrl = function (req, callback) {
+  var response = this.generateLogoutResponse(req, req.samlLogoutRequest);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(null, response, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getLogoutUrl" id="apidoc.module.passport-saml.SAML.prototype.getLogoutUrl">module passport-saml.SAML.prototype.getLogoutUrl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getLogoutUrl.getLogoutUrl" id="apidoc.element.passport-saml.SAML.prototype.getLogoutUrl.getLogoutUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getLogoutUrl
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getLogoutUrl = function (req, callback) {
+  var request = this.generateLogoutRequest(req);
+  var operation = &#x27;logout&#x27;;
+  this.requestToUrl(request, null, operation, this.getAdditionalParams(req, operation), callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.getProtocol" id="apidoc.module.passport-saml.SAML.prototype.getProtocol">module passport-saml.SAML.prototype.getProtocol</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.getProtocol.getProtocol" id="apidoc.element.passport-saml.SAML.prototype.getProtocol.getProtocol">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>getProtocol
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getProtocol = function (req) {
+  return this.options.protocol || (req.protocol || &#x27;http&#x27;).concat(&#x27;://&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.initialize" id="apidoc.module.passport-saml.SAML.prototype.initialize">module passport-saml.SAML.prototype.initialize</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.initialize.initialize" id="apidoc.element.passport-saml.SAML.prototype.initialize.initialize">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>initialize
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">initialize = function (options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!options.path) {
+    options.path = &#x27;/saml/consume&#x27;;
+  }
+
+  if (!options.host) {
+    options.host = &#x27;localhost&#x27;;
+  }
+
+  if (!options.issuer) {
+    options.issuer = &#x27;onelogin_saml&#x27;;
+  }
+
+  if (options.identifierFormat === undefined) {
+    options.identifierFormat = &#x22;urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress&#x22;;
+  }
+
+  if (options.authnContext === undefined) {
+    options.authnContext = &#x22;urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport&#x22;;
+  }
+
+  if (!options.acceptedClockSkewMs) {
+    // default to no skew
+    options.acceptedClockSkewMs = 0;
+  }
+
+  if(!options.validateInResponseTo){
+    options.validateInResponseTo = false;
+  }
+
+  if(!options.requestIdExpirationPeriodMs){
+    options.requestIdExpirationPeriodMs = 28800000;  // 8 hours
+  }
+
+  if(!options.cacheProvider){
+      options.cacheProvider = new InMemoryCacheProvider(
+          {keyExpirationPeriodMs: options.requestIdExpirationPeriodMs });
+  }
+
+  if (!options.logoutUrl) {
+    // Default to Entry Point
+    options.logoutUrl = options.entryPoint || &#x27;&#x27;;
+  }
+
+  // sha1 or sha256
+  if (!options.signatureAlgorithm) {
+    options.signatureAlgorithm = &#x27;sha1&#x27;;
+  }
+
+  return options;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.processValidlySignedAssertion" id="apidoc.module.passport-saml.SAML.prototype.processValidlySignedAssertion">module passport-saml.SAML.prototype.processValidlySignedAssertion</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion.processValidlySignedAssertion" id="apidoc.element.passport-saml.SAML.prototype.processValidlySignedAssertion.processValidlySignedAssertion">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>processValidlySignedAssertion
+        <span class="apidocSignatureSpan">(xml, inResponseTo, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">processValidlySignedAssertion = function (xml, inResponseTo, callback) {
+  var self = this;
+  var msg;
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var nowMs = new Date().getTime();
+  var profile = {};
+  var assertion;
+  var parser = new xml2js.Parser(parserConfig);
+  Q.ninvoke(parser, &#x27;parseString&#x27;, xml)
+  .then(function(doc) {
+    assertion = doc.Assertion;
+
+    var issuer = assertion.Issuer;
+    if (issuer) {
+      profile.issuer = issuer[0];
+    }
+
+    var authnStatement = assertion.AuthnStatement;
+    if (authnStatement) {
+      if (authnStatement[0].$ &#x26;&#x26; authnStatement[0].$.SessionIndex) {
+        profile.sessionIndex = authnStatement[0].$.SessionIndex;
+      }
+    }
+
+    var subject = assertion.Subject;
+    var subjectConfirmation, confirmData;
+    if (subject) {
+      var nameID = subject[0].NameID;
+      if (nameID) {
+        profile.nameID = nameID[0]._ || nameID[0];
+
+        if (nameID[0].$ &#x26;&#x26; nameID[0].$.Format) {
+          profile.nameIDFormat = nameID[0].$.Format;
+          profile.nameQualifier = nameID[0].$.NameQualifier;
+          profile.spNameQualifier = nameID[0].$.SPNameQualifier;
+        }
+      }
+
+      subjectConfirmation = subject[0].SubjectConfirmation ?
+                            subject[0].SubjectConfirmation[0] : null;
+      confirmData = subjectConfirmation &#x26;&#x26; subjectConfirmation.SubjectConfirmationData ?
+                    subjectConfirmation.SubjectConfirmationData[0] : null;
+      if (subject[0].SubjectConfirmation &#x26;&#x26; subject[0].SubjectConfirmation.length &#x3e; 1) {
+        msg = &#x27;Unable to process multiple SubjectConfirmations in SAML assertion&#x27;;
+        throw new Error(msg);
+      }
+
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectNotBefore = confirmData.$.NotBefore;
+          var subjectNotOnOrAfter = confirmData.$.NotOnOrAfter;
+
+          var subjErr = self.checkTimestampsValidityError(
+                          nowMs, subjectNotBefore, subjectNotOnOrAfter);
+          if (subjErr) {
+            throw subjErr;
+          }
+        }
+      }
+    }
+
+    // Test to see that if we have a SubjectConfirmation InResponseTo that it matches
+    // the &#x27;InResponseTo&#x27; attribute set in the Response
+    if (self.options.validateInResponseTo) {
+      if (subjectConfirmation) {
+        if (confirmData &#x26;&#x26; confirmData.$) {
+          var subjectInResponseTo = confirmData.$.InResponseTo;
+          if (inResponseTo &#x26;&#x26; subjectInResponseTo &#x26;&#x26; subjectInResponseTo != inResponseTo) {
+            return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo)
+              .then(function(){
+                throw new Error(&#x27;InResponseTo is not valid&#x27;);
+              });
+          } else if (subjectInResponseTo) {
+            var foundValidInResponseTo = false;
+            return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, subjectInResponseTo)
+              .then(function(result){
+                if (result) {
+                  var createdAt = new Date(result);
+                  if (nowMs &#x3c; createdAt.getTime() + self.options.requestIdExpirationPeriodMs)
+                    foundValidInResponseTo = true;
+                }
+                return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo );
+              })
+              .then(function(){
+                if (!foundValidInResponseTo) {
+                  throw new Error(&#x27;InResponseTo is not valid&#x27;);
+                }
+                return Q();
+              });
+          }
+        }
+      } else {
+        return Q.ninvoke(self.cacheProvider, &#x27;remove&#x27;, inResponseTo);
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function(){
+    var conditions = assertion.Conditions ? assertion.Conditions[0] : null;
+    if (assertion.Conditions &#x26;&#x26; assertion.Conditions.length &#x3e; 1) {
+      msg = &#x27;Unable to process multiple conditions in SAML assertion&#x27;;
+      throw new Error(msg);
+    }
+    if(conditions &#x26;&#x26; conditions.$) {
+      var conErr = self.checkTimestampsValidityError(
+                    nowMs, conditions.$.NotBefore, conditions.$.NotOnOrAfter);
+      if(conErr)
+        throw conErr; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.requestToUrl" id="apidoc.module.passport-saml.SAML.prototype.requestToUrl">module passport-saml.SAML.prototype.requestToUrl</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.requestToUrl.requestToUrl" id="apidoc.element.passport-saml.SAML.prototype.requestToUrl.requestToUrl">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>requestToUrl
+        <span class="apidocSignatureSpan">(request, response, operation, additionalParameters, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">requestToUrl = function (request, response, operation, additionalParameters, callback) {
+  var self = this;
+  if (self.options.skipRequestCompression)
+    requestToUrlHelper(null, new Buffer(request || response, &#x27;utf8&#x27;));
+  else
+    zlib.deflateRaw(request || response, requestToUrlHelper);
+
+  function requestToUrlHelper(err, buffer) {
+    if (err) {
+      return callback(err);
+    }
+
+    var base64 = buffer.toString(&#x27;base64&#x27;);
+    var target = url.parse(self.options.entryPoint, true);
+
+    if (operation === &#x27;logout&#x27;) {
+      if (self.options.logoutUrl) {
+        target = url.parse(self.options.logoutUrl, true);
+      }
+    } else if (operation !== &#x27;authorize&#x27;) {
+        return callback(new Error(&#x22;Unknown operation: &#x22;+operation));
+    }
+
+    var samlMessage = request ? {
+      SAMLRequest: base64
+    } : {
+      SAMLResponse: base64
+    };
+    Object.keys(additionalParameters).forEach(function(k) {
+      samlMessage[k] = additionalParameters[k];
+    });
+
+    if (self.options.privateCert) {
+      // sets .SigAlg and .Signature
+      self.signRequest(samlMessage);
+    }
+    Object.keys(samlMessage).forEach(function(k) {
+      target.query[k] = samlMessage[k];
+    });
+
+    // Delete &#x27;search&#x27; to for pulling query string from &#x27;query&#x27;
+    // https://nodejs.org/api/url.html#url_url_format_urlobj
+    delete target.search;
+
+    callback(null, url.format(target));
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.signRequest" id="apidoc.module.passport-saml.SAML.prototype.signRequest">module passport-saml.SAML.prototype.signRequest</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.signRequest.signRequest" id="apidoc.element.passport-saml.SAML.prototype.signRequest.signRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>signRequest
+        <span class="apidocSignatureSpan">(samlMessage)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">signRequest = function (samlMessage) {
+  var signer;
+  var samlMessageToSign = {};
+  switch(this.options.signatureAlgorithm) {
+    case &#x27;sha256&#x27;:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2001/04/xmldsig-more#rsa-sha256&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA256&#x27;);
+      break;
+    default:
+      samlMessage.SigAlg = &#x27;http://www.w3.org/2000/09/xmldsig#rsa-sha1&#x27;;
+      signer = crypto.createSign(&#x27;RSA-SHA1&#x27;);
+      break;
+  }
+  if (samlMessage.SAMLRequest) {
+    samlMessageToSign.SAMLRequest = samlMessage.SAMLRequest;
+  }
+  if (samlMessage.SAMLResponse) {
+    samlMessageToSign.SAMLResponse = samlMessage.SAMLResponse;
+  }
+  if (samlMessage.RelayState) {
+    samlMessageToSign.RelayState = samlMessage.RelayState;
+  }
+  if (samlMessage.SigAlg) {
+    samlMessageToSign.SigAlg = samlMessage.SigAlg;
+  }
+  signer.update(querystring.stringify(samlMessageToSign));
+  samlMessage.Signature = signer.sign(this.options.privateCert, &#x27;base64&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.validatePostRequest" id="apidoc.module.passport-saml.SAML.prototype.validatePostRequest">module passport-saml.SAML.prototype.validatePostRequest</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostRequest.validatePostRequest" id="apidoc.element.passport-saml.SAML.prototype.validatePostRequest.validatePostRequest">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostRequest
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validatePostRequest = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLRequest, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var dom = new xmldom.DOMParser().parseFromString(xml);
+  var parserConfig = {
+    explicitRoot: true,
+    tagNameProcessors: [xml2js.processors.stripPrefix]
+  };
+  var parser = new xml2js.Parser(parserConfig);
+  parser.parseString(xml, function (err, doc) {
+    if (err) {
+      return callback(err);
+    }
+
+    // Check if this document has a valid top-level signature
+    if (self.options.cert &#x26;&#x26; !self.validateSignature(xml, dom.documentElement, self.options.cert)) {
+      return callback(new Error(&#x27;Invalid signature&#x27;));
+    }
+
+    processValidlySignedPostRequest(self, doc, callback);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.validatePostResponse" id="apidoc.module.passport-saml.SAML.prototype.validatePostResponse">module passport-saml.SAML.prototype.validatePostResponse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validatePostResponse.validatePostResponse" id="apidoc.element.passport-saml.SAML.prototype.validatePostResponse.validatePostResponse">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validatePostResponse
+        <span class="apidocSignatureSpan">(container, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validatePostResponse = function (container, callback) {
+  var self = this;
+  var xml = new Buffer(container.SAMLResponse, &#x27;base64&#x27;).toString(&#x27;utf8&#x27;);
+  var doc = new xmldom.DOMParser().parseFromString(xml);
+
+  var inResponseTo = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/@InResponseTo&#x22;);
+  if(inResponseTo){
+    inResponseTo = inResponseTo.length ? inResponseTo[0].nodeValue : null;
+  }
+
+  Q.fcall(function(){
+    if(self.options.validateInResponseTo){
+      if (inResponseTo) {
+        return Q.ninvoke(self.cacheProvider, &#x27;get&#x27;, inResponseTo)
+          .then(function(result) {
+            if (!result)
+              throw new Error(&#x27;InResponseTo is not valid&#x27;);
+            return Q();
+          });
+      }
+    } else {
+      return Q();
+    }
+  })
+  .then(function() {
+    // Check if this document has a valid top-level signature
+    var validSignature = false;
+    if (self.options.cert &#x26;&#x26; self.validateSignature(xml, doc.documentElement, self.options.cert)) {
+      validSignature = true;
+    }
+
+    var assertions = xpath(doc, &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+    var encryptedAssertions = xpath(doc,
+      &#x22;/*[local-name()=&#x27;Response&#x27;]/*[local-name()=&#x27;EncryptedAssertion&#x27;]&#x22;);
+
+    if (assertions.length + encryptedAssertions.length &#x3e; 1) {
+      // There&#x27;s no reason I know of that we want to handle multiple assertions, and it seems like a
+      //   potential risk vector for signature scope issues, so treat this as an invalid signature
+      throw new Error(&#x27;Invalid signature&#x27;);
+    }
+
+    if (assertions.length == 1) {
+      if (self.options.cert &#x26;&#x26;
+          !validSignature &#x26;&#x26;
+          !self.validateSignature(xml, assertions[0], self.options.cert)) {
+        throw new Error(&#x27;Invalid signature&#x27;);
+      }
+      return self.processValidlySignedAssertion(assertions[0].toString(), inResponseTo, callback);
+    }
+
+    if (encryptedAssertions.length == 1) {
+      if (!self.options.decryptionPvk)
+        throw new Error(&#x27;No decryption key for encrypted SAML response&#x27;);
+
+      var encryptedDatas = xpath( encryptedAssertions[0], &#x22;./*[local-name()=&#x27;EncryptedData&#x27;]&#x22;);
+      if (encryptedDatas.length != 1)
+        throw new Error(&#x27;Invalid signature&#x27;);
+      var encryptedDataXml = encryptedDatas[0].toString();
+
+      var xmlencOptions = { key: self.options.decryptionPvk };
+      return Q.ninvoke(xmlenc, &#x27;decrypt&#x27;, encryptedDataXml, xmlencOptions)
+        .then(function(decryptedXml) {
+          var decryptedDoc = new xmldom.DOMParser().parseFromString(decryptedXml);
+          var decryptedAssertions = xpath(decryptedDoc, &#x22;/*[local-name()=&#x27;Assertion&#x27;]&#x22;);
+          if (decryptedAssertions.length != 1)
+            throw new Error(&#x27;Invalid EncryptedAssertion content&#x27;);
+
+          if (self.options.cert &#x26;&#x26;
+              !validSignature &#x26;&#x26;
+              !self.validateSignature(decryptedXml, decryptedAssertions[0], self.options.cert))
+            throw new Error(&#x27;Invalid signature&#x27;);
+
+          self.processValidlySignedAssertion(decryptedAssertions[0].toString(), inResponseTo, callback);
+        });
+    }
+
+    // If there&#x27;s no assertion, fall back on xml2js response parsing for the status &#x26;
+    //   LogoutResponse code.
+
+    var parserConfig = {
+      explicitRoot: true,
+      explicitCharkey: true,
+      tagNameProcessors: [xml2js.processors.stripPrefix]
+    };
+    var parser = new xml2js.Parser(parserConfig);
+    return Q.ninvoke( parser, &#x27;parseString&#x27;, xml)
+      .then(function(doc) {
+        var response = doc.Response;
+        if (response) {
+          var assertion = response.Assertion;
+          if (!assertion) {
+            var status = response.Status;
+            if (status) {
+              var statusCode = status[0].StatusCode;
+              if (statusCode &#x26;&#x26; statusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:Responder&#x22;) {
+                var nestedStatusCode = statusCode[0].StatusCode;
+                if (nestedStatusCode &#x26;&#x26; nestedStatusCode[0].$.Value === &#x22;urn:oasis:names:tc:SAML:2.0:status:NoPassive&#x22;) {
+                  if (self.options.cert &#x26;&#x26; !validSignature) {
+                    throw new Error(&#x27;Invalid signature&#x27;); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.SAML.prototype.validateSignature" id="apidoc.module.passport-saml.SAML.prototype.validateSignature">module passport-saml.SAML.prototype.validateSignature</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.SAML.prototype.validateSignature.validateSignature" id="apidoc.element.passport-saml.SAML.prototype.validateSignature.validateSignature">
+        function <span class="apidocSignatureSpan">passport-saml.SAML.prototype.</span>validateSignature
+        <span class="apidocSignatureSpan">(fullXml, currentNode, cert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateSignature = function (fullXml, currentNode, cert) {
+  var self = this;
+  var xpathSigQuery = &#x22;.//*[local-name(.)=&#x27;Signature&#x27; and &#x22; +
+                      &#x22;namespace-uri(.)=&#x27;http://www.w3.org/2000/09/xmldsig#&#x27;]&#x22;;
+  var signatures = xpath(currentNode, xpathSigQuery);
+  // This function is expecting to validate exactly one signature, so if we find more or fewer
+  //   than that, reject.
+  if (signatures.length != 1)
+    return false;
+  var signature = signatures[0];
+  var sig = new xmlCrypto.SignedXml();
+  sig.keyInfoProvider = {
+    getKeyInfo: function (key) {
+      return &#x22;&#x3c;X509Data&#x3e;&#x3c;/X509Data&#x3e;&#x22;;
+    },
+    getKey: function (keyInfo) {
+      return self.certToPEM(cert);
+    }
+  };
+  sig.loadSignature(signature);
+  // We expect each signature to contain exactly one reference to the top level of the xml we
+  //   are validating, so if we see anything else, reject.
+  if (sig.references.length != 1 )
+    return false;
+  var refUri = sig.references[0].uri;
+  var refId = (refUri[0] === &#x27;#&#x27;) ? refUri.substring(1) : refUri;
+  // If we can&#x27;t find the reference at the top level, reject
+  var idAttribute = currentNode.getAttribute(&#x27;ID&#x27;) ? &#x27;ID&#x27; : &#x27;Id&#x27;;
+  if (currentNode.getAttribute(idAttribute) != refId)
+    return false;
+  // If we find any extra referenced nodes, reject.  (xml-crypto only verifies one digest, so
+  //   multiple candidate references is bad news)
+  var totalReferencedNodes = xpath(currentNode.ownerDocument,
+                                  &#x22;//*[@&#x22; + idAttribute + &#x22;=&#x27;&#x22; + refId + &#x22;&#x27;]&#x22;);
+  if (totalReferencedNodes.length &#x3e; 1)
+    return false;
+  return sig.checkSignature(fullXml);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy" id="apidoc.module.passport-saml.Strategy">module passport-saml.Strategy</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.Strategy" id="apidoc.element.passport-saml.Strategy.Strategy">
+        function <span class="apidocSignatureSpan">passport-saml.</span>Strategy
+        <span class="apidocSignatureSpan">(options, verify)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy(options, verify) {
+  if (typeof options == &#x27;function&#x27;) {
+    verify = options;
+    options = {};
+  }
+
+  if (!verify) {
+    throw new Error(&#x27;SAML authentication strategy requires a verify function&#x27;);
+  }
+
+  this.name = &#x27;saml&#x27;;
+
+  passport.Strategy.call(this);
+
+  this._verify = verify;
+  this._saml = new saml.SAML(options);
+  this._passReqToCallback = !!options.passReqToCallback;
+  this._authnRequestBinding = options.authnRequestBinding || &#x27;HTTP-Redirect&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_" id="apidoc.element.passport-saml.Strategy.super_">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.prototype" id="apidoc.module.passport-saml.Strategy.prototype">module passport-saml.Strategy.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.authenticate" id="apidoc.element.passport-saml.Strategy.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
+  var self = this;
+
+  options.samlFallback = options.samlFallback || &#x27;login-request&#x27;;
+
+  function validateCallback(err, profile, loggedOut) {
+      if (err) {
+        return self.error(err);
+      }
+
+      if (loggedOut) {
+        req.logout();
+        if (profile) {
+          req.samlLogoutRequest = profile;
+          return self._saml.getLogoutResponseUrl(req, redirectIfSuccess);
+        }
+        return self.pass();
+      }
+
+      var verified = function (err, user, info) {
+        if (err) {
+          return self.error(err);
+        }
+
+        if (!user) {
+          return self.fail(info);
+        }
+
+        self.success(user, info);
+      };
+
+      if (self._passReqToCallback) {
+        self._verify(req, profile, verified);
+      } else {
+        self._verify(profile, verified);
+      }
+  }
+
+  function redirectIfSuccess(err, url) {
+    if (err) {
+      self.error(err);
+    } else {
+      self.redirect(url);
+    }
+  }
+
+  if (req.body &#x26;&#x26; req.body.SAMLResponse) {
+      this._saml.validatePostResponse(req.body, validateCallback);
+  } else if (req.body &#x26;&#x26; req.body.SAMLRequest) {
+      this._saml.validatePostRequest(req.body, validateCallback);
+  } else {
+    var requestHandler = {
+      &#x27;login-request&#x27;: function() {
+        if (self._authnRequestBinding === &#x27;HTTP-POST&#x27;) {
+          this._saml.getAuthorizeForm(req, function(err, data) {
+            if (err) {
+              self.error(err);
+            } else {
+              var res = req.res;
+              res.send(data);
+            }
+          });
+        } else { // Defaults to HTTP-Redirect
+          this._saml.getAuthorizeUrl(req, redirectIfSuccess);
+        }
+      }.bind(self),
+      &#x27;logout-request&#x27;: function() {
+          this._saml.getLogoutUrl(req, redirectIfSuccess);
+      }.bind(self)
+    }[options.samlFallback];
+
+    if (typeof requestHandler !== &#x27;function&#x27;) {
+      return self.fail();
+    }
+
+    requestHandler();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+### Provide the authentication callback
+
+You need to provide a route corresponding to the `path` configuration parameter given to the strategy:
+
+```javascript
+app.post(&#x27;/login/callback&#x27;,
+  passport.<span class="apidocCodeKeywordSpan">authenticate</span>(&#x27;saml&#x27;, { failureRedirect: &#x27;/&#x27;, failureFlash
+: true }),
+  function(req, res) {
+    res.redirect(&#x27;/&#x27;);
+  }
+);
+```
+
+### Authenticate requests
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata" id="apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateServiceProviderMetadata = function ( decryptionCert ) {
+  return this._saml.generateServiceProviderMetadata( decryptionCert );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.logout" id="apidoc.element.passport-saml.Strategy.prototype.logout">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>logout
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">logout = function (req, callback) {
+  this._saml.getLogoutUrl(req, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.prototype.authenticate" id="apidoc.module.passport-saml.Strategy.prototype.authenticate">module passport-saml.Strategy.prototype.authenticate</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.authenticate.authenticate" id="apidoc.element.passport-saml.Strategy.prototype.authenticate.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
+  var self = this;
+
+  options.samlFallback = options.samlFallback || &#x27;login-request&#x27;;
+
+  function validateCallback(err, profile, loggedOut) {
+      if (err) {
+        return self.error(err);
+      }
+
+      if (loggedOut) {
+        req.logout();
+        if (profile) {
+          req.samlLogoutRequest = profile;
+          return self._saml.getLogoutResponseUrl(req, redirectIfSuccess);
+        }
+        return self.pass();
+      }
+
+      var verified = function (err, user, info) {
+        if (err) {
+          return self.error(err);
+        }
+
+        if (!user) {
+          return self.fail(info);
+        }
+
+        self.success(user, info);
+      };
+
+      if (self._passReqToCallback) {
+        self._verify(req, profile, verified);
+      } else {
+        self._verify(profile, verified);
+      }
+  }
+
+  function redirectIfSuccess(err, url) {
+    if (err) {
+      self.error(err);
+    } else {
+      self.redirect(url);
+    }
+  }
+
+  if (req.body &#x26;&#x26; req.body.SAMLResponse) {
+      this._saml.validatePostResponse(req.body, validateCallback);
+  } else if (req.body &#x26;&#x26; req.body.SAMLRequest) {
+      this._saml.validatePostRequest(req.body, validateCallback);
+  } else {
+    var requestHandler = {
+      &#x27;login-request&#x27;: function() {
+        if (self._authnRequestBinding === &#x27;HTTP-POST&#x27;) {
+          this._saml.getAuthorizeForm(req, function(err, data) {
+            if (err) {
+              self.error(err);
+            } else {
+              var res = req.res;
+              res.send(data);
+            }
+          });
+        } else { // Defaults to HTTP-Redirect
+          this._saml.getAuthorizeUrl(req, redirectIfSuccess);
+        }
+      }.bind(self),
+      &#x27;logout-request&#x27;: function() {
+          this._saml.getLogoutUrl(req, redirectIfSuccess);
+      }.bind(self)
+    }[options.samlFallback];
+
+    if (typeof requestHandler !== &#x27;function&#x27;) {
+      return self.fail();
+    }
+
+    requestHandler();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+### Provide the authentication callback
+
+You need to provide a route corresponding to the `path` configuration parameter given to the strategy:
+
+```javascript
+app.post(&#x27;/login/callback&#x27;,
+  passport.<span class="apidocCodeKeywordSpan">authenticate</span>(&#x27;saml&#x27;, { failureRedirect: &#x27;/&#x27;, failureFlash
+: true }),
+  function(req, res) {
+    res.redirect(&#x27;/&#x27;);
+  }
+);
+```
+
+### Authenticate requests
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.prototype.generateServiceProviderMetadata" id="apidoc.module.passport-saml.Strategy.prototype.generateServiceProviderMetadata">module passport-saml.Strategy.prototype.generateServiceProviderMetadata</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata" id="apidoc.element.passport-saml.Strategy.prototype.generateServiceProviderMetadata.generateServiceProviderMetadata">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>generateServiceProviderMetadata
+        <span class="apidocSignatureSpan">( decryptionCert )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">generateServiceProviderMetadata = function ( decryptionCert ) {
+  return this._saml.generateServiceProviderMetadata( decryptionCert );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.prototype.logout" id="apidoc.module.passport-saml.Strategy.prototype.logout">module passport-saml.Strategy.prototype.logout</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.prototype.logout.logout" id="apidoc.element.passport-saml.Strategy.prototype.logout.logout">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.prototype.</span>logout
+        <span class="apidocSignatureSpan">(req, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">logout = function (req, callback) {
+  this._saml.getLogoutUrl(req, callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.super_" id="apidoc.module.passport-saml.Strategy.super_">module passport-saml.Strategy.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_.super_" id="apidoc.element.passport-saml.Strategy.super_.super_">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_.Strategy" id="apidoc.element.passport-saml.Strategy.super_.Strategy">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.</span>Strategy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.super_.prototype" id="apidoc.module.passport-saml.Strategy.super_.prototype">module passport-saml.Strategy.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate" id="apidoc.element.passport-saml.Strategy.super_.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
+  throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+### Provide the authentication callback
+
+You need to provide a route corresponding to the `path` configuration parameter given to the strategy:
+
+```javascript
+app.post(&#x27;/login/callback&#x27;,
+  passport.<span class="apidocCodeKeywordSpan">authenticate</span>(&#x27;saml&#x27;, { failureRedirect: &#x27;/&#x27;, failureFlash
+: true }),
+  function(req, res) {
+    res.redirect(&#x27;/&#x27;);
+  }
+);
+```
+
+### Authenticate requests
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-saml.Strategy.super_.prototype.authenticate" id="apidoc.module.passport-saml.Strategy.super_.prototype.authenticate">module passport-saml.Strategy.super_.prototype.authenticate</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-saml.Strategy.super_.prototype.authenticate.authenticate" id="apidoc.element.passport-saml.Strategy.super_.prototype.authenticate.authenticate">
+        function <span class="apidocSignatureSpan">passport-saml.Strategy.super_.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
+  throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+### Provide the authentication callback
+
+You need to provide a route corresponding to the `path` configuration parameter given to the strategy:
+
+```javascript
+app.post(&#x27;/login/callback&#x27;,
+  passport.<span class="apidocCodeKeywordSpan">authenticate</span>(&#x27;saml&#x27;, { failureRedirect: &#x27;/&#x27;, failureFlash
+: true }),
+  function(req, res) {
+    res.redirect(&#x27;/&#x27;);
+  }
+);
+```
+
+### Authenticate requests
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
