@@ -1,4 +1,7 @@
-# api documentation for  [passport-saml (v0.15.0)](https://github.com/bergie/passport-saml)  [![npm package](https://img.shields.io/npm/v/npmdoc-passport-saml.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-passport-saml) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-passport-saml.svg)](https://travis-ci.org/npmdoc/node-npmdoc-passport-saml)
+# npmdoc-passport-saml
+
+#### basic api documentation for  [passport-saml (v0.15.0)](https://github.com/bergie/passport-saml)  [![npm package](https://img.shields.io/npm/v/npmdoc-passport-saml.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-passport-saml) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-passport-saml.svg)](https://travis-ci.org/npmdoc/node-npmdoc-passport-saml)
+
 #### SAML 2.0 authentication strategy for Passport
 
 [![NPM](https://nodei.co/npm/passport-saml.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/passport-saml)
@@ -98,7 +101,8 @@
         "jshint": "jshint lib",
         "test": "mocha"
     },
-    "version": "0.15.0"
+    "version": "0.15.0",
+    "bin": {}
 }
 ```
 
